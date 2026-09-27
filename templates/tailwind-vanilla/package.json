@@ -1,0 +1,14 @@
+{
+	"name": "electrobun-tailwind-vanilla",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "Electrobun app with Tailwind CSS and vanilla TypeScript",
+	"devDependencies": {
+		"@tailwindcss/vite": "^4.0.0",
+		"@types/bun": "latest",
+		"concurrently": "^9.1.0",
+		"tailwindcss": "^4.0.0",
+		"typescript": "^5.7.2",
+		"vite": "^6.0.3"
+	}
+}

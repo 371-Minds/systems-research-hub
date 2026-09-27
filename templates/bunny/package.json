@@ -1,0 +1,10 @@
+{
+	"name": "electrobun-bunny",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "A transparent 3D bunny that follows your mouse",
+	"devDependencies": {
+		"@types/bun": "latest",
+		"typescript": "^5.7.2"
+	}
+}

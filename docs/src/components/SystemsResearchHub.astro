@@ -1,0 +1,4909 @@
+---
+// Systems Scientist Research Hub Component with Multi-Drive & MCP Integration
+---
+
+<div id="systems-research-hub" class="systems-hub-wrapper" data-cognitive-mode="creative" data-density="balanced">
+  <!-- Top Metasystemic Banner & Status -->
+  <div class="hub-header-card">
+    <div class="hub-badge-row">
+      <span class="hub-chip pulse">Metasystemic Architecture</span>
+      <span class="hub-chip">Systems Scientist Research Hub</span>
+      <span id="auth-status-chip" class="hub-chip status-idle">0 Drives Connected</span>
+      <span class="hub-chip accent-chip">Model Context Protocol (MCP) Enabled</span>
+      <span class="hub-chip non-tech-chip">Zero-Friction Non-Tech Engine</span>
+    </div>
+    <h2 class="hub-main-title">Systems Scientist Research Hub & Model Context Protocol Gateway</h2>
+    <p class="hub-subtitle">
+      Seamlessly federate across <strong>multiple Google Drive accounts</strong> (Personal, Laboratory, Enterprise) and external tools via the <strong>Model Context Protocol (MCP)</strong>. Ingest literature, datasets, and system ontology models into cybernetic causal feedback simulations and 1-click frictionless deployment packages.
+    </p>
+
+    <!-- Multi-Account Drive Bar -->
+    <div id="auth-section" class="hub-auth-bar">
+      <!-- Accounts Manager Strip -->
+      <div class="multi-drive-control-bar">
+        <div class="accounts-header">
+          <div class="accounts-label-group">
+            <span class="drive-icon-badge">📁</span>
+            <div>
+              <strong class="accounts-title">Connected Google Drive Repositories</strong>
+              <div class="accounts-sub">Federate multiple personal, lab, or organizational Google Drives simultaneously</div>
+            </div>
+          </div>
+          <div class="accounts-actions-group">
+            <button id="wipe-everything-btn" type="button" class="hub-btn hub-btn-sm hub-btn-danger" title="Purge IndexedDB tokens, cached files, history, and localStorage preferences">
+              <span>🗑️ Sign Out & Wipe Everything</span>
+            </button>
+            <button id="add-google-drive-btn" type="button" class="hub-btn hub-btn-primary add-drive-btn">
+              <span>+ Connect Another Google Drive</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic List of Connected Drive Accounts -->
+        <div id="accounts-chip-list" class="accounts-pills-row">
+          <div class="empty-accounts-prompt">
+            No Google Drives connected yet. Click <strong>Connect Google Drive</strong> to authenticate the first repository with secure client-side in-memory tokens.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Adaptive Cognitive UI Layer -->
+  <div id="cognitive-ui-layer" class="cognitive-layer-card" aria-label="Adaptive Cognitive Mode Layer">
+    <div class="cognitive-layer-header">
+      <div class="cognitive-title-group">
+        <span class="cognitive-pulse-orb" aria-hidden="true">🧠</span>
+        <div>
+          <div class="cognitive-heading-row">
+            <h3 class="cognitive-title">Adaptive Cognitive Workspace</h3>
+            <span id="active-mode-badge" class="cognitive-mode-badge">Mode: Creative</span>
+            <span class="cognitive-engine-tag">CognitiveStateEngine v1.0 • Client Behavioral</span>
+          </div>
+          <p class="cognitive-desc">
+            Autonomous behavioral telemetry tunes layout density, tab hierarchy, and panel emphasis without modifying underlying data or requiring account access.
+          </p>
+        </div>
+      </div>
+
+      <!-- Recommendation Chip & Auto-Switch Toggle -->
+      <div class="cognitive-actions-group">
+        <!-- Suggestion chip: "Analytics suggested — switch?" -->
+        <div id="cognitive-suggestion-chip" class="cognitive-suggestion-chip" style="display: none;">
+          <span class="suggestion-glow" aria-hidden="true">✨</span>
+          <span id="cognitive-suggestion-text" class="suggestion-text">Analytics suggested — switch?</span>
+          <button id="cognitive-apply-suggestion-btn" type="button" class="suggestion-apply-btn">Switch</button>
+          <button id="cognitive-dismiss-suggestion-btn" type="button" class="suggestion-dismiss-btn" title="Dismiss suggestion" aria-label="Dismiss suggestion">✕</button>
+        </div>
+
+        <!-- Auto-Switch Toggle (Off by default) -->
+        <div class="auto-switch-toggle-wrap">
+          <label class="auto-switch-label" title="Opt-in automatic cognitive mode adaptation based on continuous behavioral scoring. Off by default.">
+            <span class="toggle-text">Auto-Switch:</span>
+            <div class="toggle-switch">
+              <input id="cognitive-auto-switch" type="checkbox" aria-label="Toggle cognitive auto-switch" />
+              <span class="toggle-slider"></span>
+            </div>
+            <span id="auto-switch-status" class="toggle-status-text">Off (Manual)</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mode Selector Buttons Row -->
+    <div class="cognitive-modes-bar" role="tablist" aria-label="Cognitive Modes">
+      <button
+        id="mode-btn-executive"
+        class="cognitive-mode-btn"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        data-mode="executive"
+        title="Executive Mode: Strategic overview, high-level feedback loops, zero-friction deployment"
+      >
+        <div class="mode-btn-head">
+          <span class="mode-icon">👔</span>
+          <span class="mode-name">Executive</span>
+        </div>
+        <div class="mode-sub">Strategy & Overview</div>
+        <div class="mode-score-bar"><span id="score-bar-executive" class="score-fill" style="width: 20%;"></span></div>
+        <span id="mode-suggest-badge-executive" class="mode-suggest-pill" style="display: none;">Suggested</span>
+      </button>
+
+      <button
+        id="mode-btn-technical"
+        class="cognitive-mode-btn"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        data-mode="technical"
+        title="Technical Mode: Deep inspection, schema inspection, MCP protocol feeds"
+      >
+        <div class="mode-btn-head">
+          <span class="mode-icon">🛠️</span>
+          <span class="mode-name">Technical</span>
+        </div>
+        <div class="mode-sub">Deep Inspection</div>
+        <div class="mode-score-bar"><span id="score-bar-technical" class="score-fill" style="width: 20%;"></span></div>
+        <span id="mode-suggest-badge-technical" class="mode-suggest-pill" style="display: none;">Suggested</span>
+      </button>
+
+      <button
+        id="mode-btn-creative"
+        class="cognitive-mode-btn active"
+        type="button"
+        role="tab"
+        aria-selected="true"
+        data-mode="creative"
+        title="Creative Mode: Synthesis, ontology blueprints, cross-domain modeling"
+      >
+        <div class="mode-btn-head">
+          <span class="mode-icon">🎨</span>
+          <span class="mode-name">Creative</span>
+        </div>
+        <div class="mode-sub">Synthesis & Blueprints</div>
+        <div class="mode-score-bar"><span id="score-bar-creative" class="score-fill" style="width: 20%;"></span></div>
+        <span id="mode-suggest-badge-creative" class="mode-suggest-pill" style="display: none;">Suggested</span>
+      </button>
+
+      <button
+        id="mode-btn-analytics"
+        class="cognitive-mode-btn"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        data-mode="analytics"
+        title="Analytics Mode: Simulation dynamics, causal loops, differential metrics"
+      >
+        <div class="mode-btn-head">
+          <span class="mode-icon">📊</span>
+          <span class="mode-name">Analytics</span>
+        </div>
+        <div class="mode-sub">Simulation & Metrics</div>
+        <div class="mode-score-bar"><span id="score-bar-analytics" class="score-fill" style="width: 20%;"></span></div>
+        <span id="mode-suggest-badge-analytics" class="mode-suggest-pill" style="display: none;">Suggested</span>
+      </button>
+
+      <button
+        id="mode-btn-focus"
+        class="cognitive-mode-btn"
+        type="button"
+        role="tab"
+        aria-selected="false"
+        data-mode="focus"
+        title="Focus Mode: Single-panel immersion, distraction-minimized, zen workbench"
+      >
+        <div class="mode-btn-head">
+          <span class="mode-icon">🎯</span>
+          <span class="mode-name">Focus</span>
+        </div>
+        <div class="mode-sub">Distraction-Minimized</div>
+        <div class="mode-score-bar"><span id="score-bar-focus" class="score-fill" style="width: 20%;"></span></div>
+        <span id="mode-suggest-badge-focus" class="mode-suggest-pill" style="display: none;">Suggested</span>
+      </button>
+    </div>
+
+    <!-- Mode Info / Emphasis Explanation Strip -->
+    <div id="cognitive-emphasis-info" class="cognitive-emphasis-strip">
+      <div class="emphasis-icon" id="emphasis-icon">🎨</div>
+      <div class="emphasis-body">
+        <strong id="emphasis-title">Creative Mode Active:</strong>
+        <span id="emphasis-desc">
+          Prioritizes Systems Modeler & Metasystemic Linkage Integrator. 1:1.4 layout with synthesis sandbox prominence.
+        </span>
+      </div>
+      <div class="focus-drawer-toggle-wrap" id="focus-drawer-toggle-wrap" style="display: none;">
+        <button id="toggle-ingestion-drawer-btn" class="hub-btn hub-btn-sm hub-btn-outline" type="button">
+          📂 Toggle Ingestion Panel
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Systems Scientist Workbenches -->
+  <div class="hub-grid">
+    <!-- Left Column: Multi-Drive Ingestion & Unified Knowledge Graph Pipeline -->
+    <div id="hub-left-panel" class="hub-panel">
+      <div class="panel-header">
+        <div class="panel-title-group">
+          <span class="panel-icon">📂</span>
+          <h3>Federated Ingestion Stream</h3>
+        </div>
+        <div class="panel-actions-group">
+          <select id="drive-account-selector" class="hub-select-account">
+            <option value="all">All Connected Drives</option>
+          </select>
+          <span id="files-count-badge" class="counter-badge">0 items</span>
+        </div>
+      </div>
+
+      <div class="search-filter-bar">
+        <input
+          id="drive-search-input"
+          type="text"
+          placeholder="Search across all connected Google Drives..."
+          class="hub-input"
+        />
+        <select id="drive-type-filter" class="hub-select">
+          <option value="all">All Types</option>
+          <option value="documents">Docs & Text</option>
+          <option value="pdfs">PDFs</option>
+          <option value="spreadsheets">Sheets</option>
+          <option value="code">Code / Schemas</option>
+        </select>
+      </div>
+
+      <div id="drive-loading-state" class="hub-state-box" style="display: none;">
+        <div class="spinner"></div>
+        <p>Querying Google Drive files across connected accounts...</p>
+      </div>
+
+      <div id="drive-empty-unauth" class="hub-state-box">
+        <div class="empty-icon">🔒</div>
+        <h4>Drive Storage Standby</h4>
+        <p>Connect one or more Google Drives above to securely stream research files into this Metasystemic session.</p>
+        <div class="offline-presets-box">
+          <span class="preset-label">Or test with research archetypes:</span>
+          <div class="preset-btns-row">
+            <button class="hub-btn hub-btn-sm hub-btn-subtle test-archetype-btn" data-archetype="cybernetics">
+              Cybernetics (VSM)
+            </button>
+            <button class="hub-btn hub-btn-sm hub-btn-subtle test-archetype-btn" data-archetype="leverage">
+              12 Leverage Points
+            </button>
+            <button class="hub-btn hub-btn-sm hub-btn-subtle test-archetype-btn" data-archetype="electrobun">
+              Electrobun Architecture
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div id="drive-empty-search" class="hub-state-box" style="display: none;">
+        <div class="empty-icon">🔍</div>
+        <h4>No matching files found</h4>
+        <p>Try searching with another keyword or adjust your category filter.</p>
+      </div>
+
+      <ul id="drive-files-list" class="files-list" style="display: none;">
+        <!-- Dynamically injected items -->
+      </ul>
+    </div>
+
+    <!-- Right Column: Metasystemic Synthesis & System Dynamics Modeler -->
+    <div class="hub-panel synthesis-panel">
+      <div class="panel-header">
+        <div class="panel-title-group">
+          <span class="panel-icon">⚡</span>
+          <h3>Metasystemic Synthesis & Simulation Engine</h3>
+        </div>
+        <div class="tab-group">
+          <button id="tab-modeler" class="tab-btn active" type="button">Systems Modeler</button>
+          <button id="tab-simulator" class="tab-btn" type="button">Causal Canvas & Sim</button>
+          <button id="tab-mcp" class="tab-btn" type="button">MCP Ecosystem</button>
+          <button id="tab-preview" class="tab-btn" type="button">Doc Inspector</button>
+          <button id="tab-frictionless" class="tab-btn" type="button">Zero-Friction Deploy</button>
+        </div>
+      </div>
+
+      <!-- Tab 1: Systems Modeler & Feedback Analyzer -->
+      <div id="view-modeler" class="tab-view active">
+        <div class="modeler-intro">
+          <h4>Active Metasystem Dynamics & Multi-Source Feedback</h4>
+          <p>
+            Synthesizes inputs across federated Google Drives and MCP contextual servers into self-regulating feedback loops, variety attenuation, and zero-friction adoption pipelines.
+          </p>
+        </div>
+
+        <div class="system-loops-grid">
+          <div class="loop-card balancing">
+            <div class="loop-head">
+              <span class="loop-tag">Balancing Loop (B1)</span>
+              <span class="loop-status">Equilibrium</span>
+            </div>
+            <h5>Cognitive Friction vs Non-Tech Adoption</h5>
+            <p>
+              As interface abstraction increases, cognitive overload drops exponentially, accelerating enterprise and citizen adoption of complex system backends.
+            </p>
+            <div class="loop-metrics">
+              <span>Goal: Zero CLI barrier</span>
+              <span>Damping: 0.15s</span>
+            </div>
+          </div>
+
+          <div class="loop-card reinforcing">
+            <div class="loop-head">
+              <span class="loop-tag">Reinforcing Loop (R1)</span>
+              <span class="loop-status">Compounding</span>
+            </div>
+            <h5>Multi-Drive Knowledge Synergy & MCP Graph</h5>
+            <p>
+              Federating across multiple research drives compounds cross-domain ontological connections, improving automatic systems architectural heuristics.
+            </p>
+            <div class="loop-metrics">
+              <span>Multi-Source Synergy: 2.45x</span>
+              <span>Entropy reduction: 82%</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Synthesizer Sandbox -->
+        <div class="synthesizer-card">
+          <h4>Metasystemic Linkage Integrator</h4>
+          <p class="desc">
+            Provide any document from your connected Google Drives, arXiv paper, GitHub repository link, or ontology schema to generate a zero-friction deployment blueprint for non-technical stakeholders.
+          </p>
+          <div class="link-presets-row">
+            <span class="preset-label">Quick Links:</span>
+            <button class="preset-pill" data-link="https://github.com/blackboardsh/electrobun">Electrobun Runtime Repo</button>
+            <button class="preset-pill" data-link="https://framework.blackboard.sh/electrobun/guides/architecture/overview/">Cybernetic Architecture Spec</button>
+            <button class="preset-pill" data-link="https://modelcontextprotocol.io">Model Context Protocol (MCP) Spec</button>
+            <button class="preset-pill" data-link="https://arxiv.org/abs/complex-adaptive-systems-vsm">VSM Systems Paper</button>
+          </div>
+          <div class="link-input-row">
+            <input
+              id="metasystem-link-input"
+              type="text"
+              placeholder="e.g. Google Drive Document, ArXiv URL, Github repo link, or ontology schema..."
+              class="hub-input"
+            />
+            <button id="synthesize-btn" class="hub-btn hub-btn-primary" type="button">
+              Synthesize Blueprint
+            </button>
+          </div>
+          <div id="synthesizer-output" class="synthesizer-results">
+            <div class="blueprint-card">
+              <div class="bp-header">
+                <span class="bp-title">Frictionless Adoption Blueprint: Multi-Source Model</span>
+                <span class="bp-badge">Ready for Non-Techs</span>
+              </div>
+              <div class="bp-steps">
+                <div class="bp-step">
+                  <div class="step-num">1</div>
+                  <div>
+                    <strong>Federated Identity & Multi-Drive Ingestion:</strong>
+                    Direct client-side OAuth with zero credential leakage, allowing non-tech users to connect multiple team or personal drives effortlessly.
+                  </div>
+                </div>
+                <div class="bp-step">
+                  <div class="step-num">2</div>
+                  <div>
+                    <strong>Standardized MCP Context Server:</strong>
+                    Exposes Drive documents, GitHub repositories, and open preprints under universal JSON-RPC 2.0 endpoints for instant agentic access.
+                  </div>
+                </div>
+                <div class="bp-step">
+                  <div class="step-num">3</div>
+                  <div>
+                    <strong>Autonomous 1-Click Desktop / Web Run:</strong>
+                    Powered by Electrobun's ultra-lightweight Cottontail runtime or instant web preview; no 300MB Chromium installs.
+                  </div>
+                </div>
+              </div>
+              <div class="bp-actions">
+                <button class="hub-btn hub-btn-sm hub-btn-outline export-bundle-btn" type="button">
+                  📦 Export 1-Click HTML Bundle
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 2: Causal Loop Canvas & Real-Time Simulator -->
+      <div id="view-simulator" class="tab-view" style="display: none;">
+        <div class="simulator-wrapper">
+          <div class="sim-header">
+            <div>
+              <h4>Cybernetic Causal Loop Visualizer & Simulator</h4>
+              <p class="sim-desc">
+                Interactive dynamics showing information flow across federated drives, variety attenuation, and non-technical adoption equilibrium.
+              </p>
+            </div>
+            <div class="sim-controls">
+              <button id="sim-play-pause-btn" class="hub-btn hub-btn-sm hub-btn-primary" type="button">▶ Run Simulation</button>
+              <button id="sim-reset-btn" class="hub-btn hub-btn-sm hub-btn-subtle" type="button">↺ Reset</button>
+            </div>
+          </div>
+
+          <!-- Dynamic Causal Canvas -->
+          <div class="canvas-container">
+            <canvas id="causal-loop-canvas" width="600" height="260"></canvas>
+            <div class="canvas-legend">
+              <span class="legend-item"><span class="legend-dot green"></span> (+) Reinforcing Flow</span>
+              <span class="legend-item"><span class="legend-dot blue"></span> (-) Balancing Feedback</span>
+              <span class="legend-item"><span class="legend-dot gold"></span> Information Particle</span>
+            </div>
+          </div>
+
+          <!-- Simulation Parameter Sliders -->
+          <div class="sim-params-grid">
+            <div class="param-slider-card">
+              <div class="param-head">
+                <label for="slider-abstraction">UI Abstraction (Zero-CLI)</label>
+                <span id="val-abstraction" class="slider-val">85%</span>
+              </div>
+              <input id="slider-abstraction" type="range" min="10" max="100" value="85" class="hub-range" />
+            </div>
+
+            <div class="param-slider-card">
+              <div class="param-head">
+                <label for="slider-velocity">Feedback Velocity</label>
+                <span id="val-velocity" class="slider-val">1.4x</span>
+              </div>
+              <input id="slider-velocity" type="range" min="0.2" max="3.0" step="0.1" value="1.4" class="hub-range" />
+            </div>
+
+            <div class="param-slider-card">
+              <div class="param-head">
+                <label for="slider-friction">Friction Damping</label>
+                <span id="val-friction" class="slider-val">70%</span>
+              </div>
+              <input id="slider-friction" type="range" min="10" max="100" value="70" class="hub-range" />
+            </div>
+          </div>
+
+          <!-- Live Metrics Chart Canvas -->
+          <div class="metrics-chart-box">
+            <div class="chart-header">
+              <span>Dynamic State Variables: Adoption (Green), Systemic Coherence (Blue), Friction (Red)</span>
+              <span id="sim-step-counter" class="chart-step">T = 0s</span>
+            </div>
+            <canvas id="metrics-plot-canvas" width="600" height="120"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 3: Model Context Protocol (MCP) Ecosystem & Extension Hub -->
+      <div id="view-mcp" class="tab-view" style="display: none;">
+        <div class="mcp-ecosystem-wrapper">
+          <div class="mcp-intro-banner">
+            <div class="mcp-intro-title">
+              <span class="mcp-icon">🌐</span>
+              <h4>Model Context Protocol (MCP) Metasystem Gateway</h4>
+            </div>
+            <p>
+              <strong>Yes!</strong> The Model Context Protocol (MCP) is the ideal open standard for this metasystemic hub. Instead of building bespoke one-off integrations for every cloud drive or database, MCP establishes a universal client-server specification (JSON-RPC) allowing models and non-technical apps to access:
+            </p>
+            <ul class="mcp-feature-list">
+              <li><strong>Unified Resource URIs:</strong> e.g., <code>mcp://google-drive/&lt;account&gt;/&lt;fileId&gt;</code>, <code>mcp://github/repo/commit</code>, <code>mcp://arxiv/paper</code></li>
+              <li><strong>Agentic Tool Execution:</strong> <code>package_frictionless_bundle</code>, <code>query_systems_papers</code>, <code>extract_feedback_loops</code></li>
+              <li><strong>Real JSON-RPC 2.0 Client:</strong> Full <code>initialize</code> → <code>tools/list</code> → <code>tools/call</code> handshake over HTTP POST.</li>
+              <li><strong>Zero Silent Failures:</strong> All network and HTTP errors surface actual status codes and response bodies.</li>
+              <li><strong>Clean Protocol Separation:</strong> Live handshaked tools are explicitly partitioned from built-in reference blueprints.</li>
+            </ul>
+          </div>
+
+          <!-- Section 1: Live Federated MCP Servers & Discovered Tools -->
+          <div class="mcp-section-wrapper live-section">
+            <div class="mcp-section-header">
+              <div class="mcp-section-title-group">
+                <span class="live-status-dot pulse"></span>
+                <h5>Live Federated MCP Servers & Discovered Tools</h5>
+              </div>
+              <span id="live-servers-count-badge" class="counter-badge">0 Active Live Handshakes</span>
+            </div>
+
+            <div id="live-mcp-servers-list" class="live-mcp-grid">
+              <!-- Dynamically populated or empty state -->
+              <div id="empty-live-servers-prompt" class="empty-live-box">
+                <div class="empty-icon">🔌</div>
+                <h6>No External Live MCP Servers Connected</h6>
+                <p>
+                  Enter a JSON-RPC 2.0 endpoint URL below to execute a real <code>initialize</code> handshake, inspect server capabilities, and discover live executable tools.
+                </p>
+                <div class="preset-endpoints-row">
+                  <span class="preset-label">Test with live/simulated endpoint:</span>
+                  <button type="button" class="hub-btn hub-btn-sm hub-btn-subtle mcp-quick-endpoint-btn" data-url="mcp://simulator">
+                    ⚡ Instant In-Memory Test Node (mcp://simulator)
+                  </button>
+                  <button type="button" class="hub-btn hub-btn-sm hub-btn-subtle mcp-quick-endpoint-btn" data-url="http://localhost:8080/mcp">
+                    Localhost:8080
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Tool Runner Modal / Card -->
+          <div id="mcp-tool-runner-card" class="mcp-tool-runner-card" style="display: none;">
+            <div class="runner-header">
+              <div class="runner-title-group">
+                <span class="runner-icon">⚡</span>
+                <div>
+                  <h5 id="runner-tool-name">tools/call: tool_name</h5>
+                  <span id="runner-server-name" class="runner-server-tag">Server: ...</span>
+                </div>
+              </div>
+              <button id="close-runner-btn" class="pill-remove-btn" type="button" title="Close tool runner">✕</button>
+            </div>
+            <p id="runner-tool-desc" class="runner-desc">Tool description</p>
+            <div class="runner-input-group">
+              <label for="runner-args-input">JSON-RPC 2.0 Arguments (JSON Object):</label>
+              <textarea id="runner-args-input" class="hub-textarea" rows="3" placeholder='{"argName": "value"}'></textarea>
+            </div>
+            <div class="runner-actions">
+              <button id="execute-tool-call-btn" class="hub-btn hub-btn-primary" type="button">
+                ▶ Execute tools/call
+              </button>
+              <span id="runner-status-indicator" class="runner-status"></span>
+            </div>
+            <div id="runner-result-box" class="runner-result-box" style="display: none;">
+              <h6>Response Payload:</h6>
+              <pre id="runner-result-content"></pre>
+            </div>
+          </div>
+
+          <!-- Section 2: Built-in Reference Connectors (Reference Architecture) -->
+          <div class="mcp-section-wrapper built-in-section">
+            <div class="mcp-section-header">
+              <div class="mcp-section-title-group">
+                <span class="mcp-spec-icon">🏛️</span>
+                <h5>Built-in System Connectors (Reference Architecture)</h5>
+              </div>
+              <span class="hub-chip non-tech-chip">Built-in Reference Spec</span>
+            </div>
+
+            <!-- Active MCP Servers Matrix -->
+            <div class="mcp-servers-grid">
+              <div class="mcp-server-card active">
+                <div class="mcp-card-header">
+                  <span class="mcp-server-icon">📁</span>
+                  <div class="mcp-server-meta">
+                    <h5>Google Drive MCP Gateway</h5>
+                    <span class="mcp-status-pill connected">Reference Spec</span>
+                  </div>
+                </div>
+                <p class="mcp-card-desc">Provides normalized MCP resources and document streams from authenticated Google Drive accounts.</p>
+                <div class="mcp-metrics-row">
+                  <span><strong>Resources:</strong> <span id="mcp-drive-resources-count">0 synced</span></span>
+                  <span><strong>Tools:</strong> 2 spec tools</span>
+                  <span><strong>Protocol:</strong> JSON-RPC 2.0</span>
+                </div>
+                <div class="mcp-tools-list">
+                  <code>drive_read_resource(uri)</code>
+                  <code>drive_search_files(query)</code>
+                </div>
+              </div>
+
+              <div class="mcp-server-card active">
+                <div class="mcp-card-header">
+                  <span class="mcp-server-icon">⚡</span>
+                  <div class="mcp-server-meta">
+                    <h5>Electrobun Desktop Host MCP</h5>
+                    <span class="mcp-status-pill connected">Reference Spec</span>
+                  </div>
+                </div>
+                <p class="mcp-card-desc">Direct RPC bridge for native windowing, Cottontail micro-runtime bundles, and zero-CLI desktop packaging.</p>
+                <div class="mcp-metrics-row">
+                  <span><strong>Resources:</strong> 14 schemas</span>
+                  <span><strong>Tools:</strong> 2 spec tools</span>
+                  <span><strong>Target:</strong> Cross-Platform</span>
+                </div>
+                <div class="mcp-tools-list">
+                  <code>package_frictionless_bundle(target)</code>
+                  <code>create_native_window(config)</code>
+                </div>
+              </div>
+
+              <div class="mcp-server-card active">
+                <div class="mcp-card-header">
+                  <span class="mcp-server-icon">📚</span>
+                  <div class="mcp-server-meta">
+                    <h5>ArXiv Systems Science MCP</h5>
+                    <span class="mcp-status-pill connected">Reference Spec</span>
+                  </div>
+                </div>
+                <p class="mcp-card-desc">Semantic search across open-access preprints, cybernetic feedback papers, and complex adaptive systems models.</p>
+                <div class="mcp-metrics-row">
+                  <span><strong>Resources:</strong> 3,500+ papers</span>
+                  <span><strong>Tools:</strong> 1 spec tool</span>
+                  <span><strong>Feed:</strong> cs.SY / nlin.AO</span>
+                </div>
+                <div class="mcp-tools-list">
+                  <code>query_systems_papers(topic)</code>
+                </div>
+              </div>
+
+              <div class="mcp-server-card active">
+                <div class="mcp-card-header">
+                  <span class="mcp-server-icon">🐙</span>
+                  <div class="mcp-server-meta">
+                    <h5>GitHub Metasystem Bridge</h5>
+                    <span class="mcp-status-pill connected">Reference Spec</span>
+                  </div>
+                </div>
+                <p class="mcp-card-desc">Repository sync, commit logs, release artifacts, and automated workflow triggers for 371-Minds and blackboardsh/electrobun.</p>
+                <div class="mcp-metrics-row">
+                  <span><strong>Resources:</strong> 24 repositories</span>
+                  <span><strong>Tools:</strong> 1 spec tool</span>
+                  <span><strong>Branch:</strong> main / dev</span>
+                </div>
+                <div class="mcp-tools-list">
+                  <code>fetch_repo_manifest(owner, repo)</code>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Section 3: Add Custom MCP Server Connector -->
+          <div class="add-mcp-box">
+            <div class="add-mcp-header">
+              <span class="add-mcp-icon">🔌</span>
+              <div>
+                <h5>Connect External Model Context Protocol (MCP) Server</h5>
+                <p>
+                  Speaks JSON-RPC 2.0 over HTTP POST. Executes <code>initialize</code> to fetch <code>serverInfo</code> and <code>tools/list</code> to discover live tools with strict HTTP status & body error reporting:
+                </p>
+              </div>
+            </div>
+            <div class="preset-endpoints-bar">
+              <span class="preset-label">Quick Endpoints:</span>
+              <button type="button" class="preset-pill mcp-quick-endpoint-btn" data-url="mcp://simulator">mcp://simulator (Test Node)</button>
+              <button type="button" class="preset-pill mcp-quick-endpoint-btn" data-url="http://localhost:8080/mcp">http://localhost:8080/mcp</button>
+              <button type="button" class="preset-pill mcp-quick-endpoint-btn" data-url="http://localhost:3001/api/mcp">http://localhost:3001/api/mcp</button>
+            </div>
+            <div class="add-mcp-row">
+              <input
+                id="custom-mcp-url"
+                type="text"
+                placeholder="http://localhost:8080/mcp, https://mcp.domain.com/v1, or mcp://simulator"
+                class="hub-input"
+              />
+              <button id="add-custom-mcp-btn" class="hub-btn hub-btn-primary" type="button">
+                Handshake & Connect Server
+              </button>
+            </div>
+            <div id="mcp-connect-toast" class="mcp-toast" style="display: none;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 4: Document Inspector -->
+      <div id="view-preview" class="tab-view" style="display: none;">
+        <div id="doc-preview-container" class="preview-box">
+          <div class="preview-empty">
+            <span class="preview-icon">📄</span>
+            <h4>Select a Document to Inspect</h4>
+            <p>Click "Inspect" on any document in your Google Drive list to load full preview and systemic extracted concepts.</p>
+          </div>
+        </div>
+
+        <!-- Inspection History (IndexedDB Cache) -->
+        <div id="inspection-history-panel" class="inspection-history-card" style="display: none;">
+          <div class="history-header">
+            <div class="history-title-group">
+              <span class="history-icon">📜</span>
+              <h5>Recent Inspection History</h5>
+              <span id="history-count-badge" class="counter-badge">0 cached</span>
+            </div>
+            <span class="history-persistence-tag">IndexedDB Local Cache</span>
+          </div>
+          <div id="inspection-history-list" class="inspection-history-chips">
+            <!-- Dynamically populated chips -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab 5: Zero-Friction Deploy Architect -->
+      <div id="view-frictionless" class="tab-view" style="display: none;">
+        <div class="zero-friction-panel">
+          <div class="panel-head-group">
+            <div>
+              <h4>Frictionless Metasystemic Deployment Protocol</h4>
+              <p class="panel-sub-desc">1-Click single-file delivery working against connected Google Drives on load</p>
+            </div>
+            <div class="deploy-actions-group">
+              <button id="export-standalone-hub-btn" class="hub-btn hub-btn-sm hub-btn-primary" type="button" title="Export full self-contained HTML bundle with companion manifest">
+                📦 Export Standalone HTML Bundle & Companion Manifest
+              </button>
+              <button id="download-full-manifest-btn" class="hub-btn hub-btn-sm hub-btn-outline" type="button" title="Download standalone deployment manifest JSON">
+                💾 Download Deployment Manifest (.json)
+              </button>
+            </div>
+          </div>
+          <p>
+            Standardized operational parameters configured to guarantee 100% non-technical usability across organizations:
+          </p>
+
+          <div class="protocol-matrix">
+            <div class="proto-item">
+              <div class="proto-icon">🎯</div>
+              <div>
+                <strong>Single Action Launch</strong>
+                <p>Applications start without runtime dependencies, Python environments, or CLI prompts. Click to open in browser or standalone lightweight desktop window.</p>
+              </div>
+            </div>
+            <div class="proto-item">
+              <div class="proto-icon">🔐</div>
+              <div>
+                <strong>Ephemeral In-Memory Tokens</strong>
+                <p>Strict security standard preventing unencrypted local storage persistence while preserving session fluidity across all connected Google Drives.</p>
+              </div>
+            </div>
+            <div class="proto-item">
+              <div class="proto-icon">🌐</div>
+              <div>
+                <strong>Universal Cross-Platform Target</strong>
+                <p>Consistent behavior across Web, macOS, Linux, and Windows via native system views and Electrobun's Cottontail runtime.</p>
+              </div>
+            </div>
+            <div class="proto-item">
+              <div class="proto-icon">🧠</div>
+              <div>
+                <strong>Self-Describing Data Schema (MCP)</strong>
+                <p>Translates complex multi-source APIs into clean visual action cards, metrics, and forms that require no code comprehension.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Stafford Beer Viable System Model (VSM) Architecture Matrix -->
+          <div class="vsm-matrix-card">
+            <h5>Viable System Model (VSM) Cybernetic Layers</h5>
+            <div class="vsm-grid">
+              <div class="vsm-col">
+                <span class="vsm-badge">System 1</span>
+                <strong>Operations</strong>
+                <p>Federated Google Drive read-only retrieval, document parsing, Electrobun runtime views.</p>
+              </div>
+              <div class="vsm-col">
+                <span class="vsm-badge">System 2</span>
+                <strong>Coordination</strong>
+                <p>MCP JSON-RPC router, debounced multi-account search, token lifecycle synchronization.</p>
+              </div>
+              <div class="vsm-col">
+                <span class="vsm-badge">System 3</span>
+                <strong>Operational Control</strong>
+                <p>Dynamic feedback loop simulation, balance balancing loop (B1), variety attenuation audit.</p>
+              </div>
+              <div class="vsm-col">
+                <span class="vsm-badge">System 4</span>
+                <strong>Forecasting & Strategy</strong>
+                <p>Multi-source ontological synthesis, ArXiv ingestion, friction damping models.</p>
+              </div>
+              <div class="vsm-col">
+                <span class="vsm-badge">System 5</span>
+                <strong>Policy & Identity</strong>
+                <p>Metasystemic constitution: Zero friction, 100% non-tech accessibility, zero data leaks.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import {
+    initAuth,
+    connectNewGoogleDrive,
+    disconnectAccount,
+    disconnectAll,
+    getAllAccounts,
+    setActiveAccount,
+    subscribeAccounts,
+    restorePersistedAccounts,
+    type ConnectedDriveAccount
+  } from "../lib/driveAuth";
+  import { listDriveFiles, fetchFileContentPreview, type DriveFile } from "../lib/driveApi";
+  import { mcpRegistry } from "../lib/mcpRegistry";
+  import {
+    saveFileCache,
+    loadFileCache,
+    saveInspectedFile,
+    loadInspectionHistory,
+    loadLastSelectedFile,
+    saveUiPreferences,
+    loadUiPreferences,
+    saveSimulatorState,
+    loadSimulatorState,
+    wipeAllLocalPersistence
+  } from "../lib/persistence";
+  import {
+    generateStandaloneBundleHtml,
+    generateDeploymentManifest,
+    collectDocumentStyles,
+    triggerFileDownload,
+    type BundleExportOptions
+  } from "../lib/standaloneBundleExporter";
+
+  let currentFiles: DriveFile[] = [];
+  let selectedFile: DriveFile | null = null;
+  let activeAccountsList: ConnectedDriveAccount[] = [];
+
+  // DOM Elements
+  const addDriveBtn = document.getElementById("add-google-drive-btn");
+  const wipeEverythingBtn = document.getElementById("wipe-everything-btn");
+  const accountsChipList = document.getElementById("accounts-chip-list");
+  const authStatusChip = document.getElementById("auth-status-chip");
+  const driveAccountSelector = document.getElementById("drive-account-selector") as HTMLSelectElement;
+
+  const driveLoading = document.getElementById("drive-loading-state");
+  const driveEmptyUnauth = document.getElementById("drive-empty-unauth");
+  const driveEmptySearch = document.getElementById("drive-empty-search");
+  const driveFilesList = document.getElementById("drive-files-list");
+  const filesCountBadge = document.getElementById("files-count-badge");
+  const searchInput = document.getElementById("drive-search-input") as HTMLInputElement;
+  const typeFilter = document.getElementById("drive-type-filter") as HTMLSelectElement;
+
+  const tabModeler = document.getElementById("tab-modeler");
+  const tabSimulator = document.getElementById("tab-simulator");
+  const tabMcp = document.getElementById("tab-mcp");
+  const tabPreview = document.getElementById("tab-preview");
+  const tabFrictionless = document.getElementById("tab-frictionless");
+
+  const viewModeler = document.getElementById("view-modeler");
+  const viewSimulator = document.getElementById("view-simulator");
+  const viewMcp = document.getElementById("view-mcp");
+  const viewPreview = document.getElementById("view-preview");
+  const viewFrictionless = document.getElementById("view-frictionless");
+  const docPreviewContainer = document.getElementById("doc-preview-container");
+  const inspectionHistoryPanel = document.getElementById("inspection-history-panel");
+  const inspectionHistoryList = document.getElementById("inspection-history-list");
+  const historyCountBadge = document.getElementById("history-count-badge");
+
+  const metasystemLinkInput = document.getElementById("metasystem-link-input") as HTMLInputElement;
+  const synthesizeBtn = document.getElementById("synthesize-btn");
+  const synthesizerOutput = document.getElementById("synthesizer-output");
+  const downloadManifestBtn = document.getElementById("download-full-manifest-btn");
+  const exportStandaloneBtn = document.getElementById("export-standalone-hub-btn");
+  const mcpDriveResourcesCount = document.getElementById("mcp-drive-resources-count");
+
+  const customMcpUrl = document.getElementById("custom-mcp-url") as HTMLInputElement;
+  const addCustomMcpBtn = document.getElementById("add-custom-mcp-btn") as HTMLButtonElement;
+  const mcpConnectToast = document.getElementById("mcp-connect-toast");
+  const liveServersList = document.getElementById("live-mcp-servers-list");
+  const liveServersCountBadge = document.getElementById("live-servers-count-badge");
+  const toolRunnerCard = document.getElementById("mcp-tool-runner-card");
+  const runnerToolName = document.getElementById("runner-tool-name");
+  const runnerServerName = document.getElementById("runner-server-name");
+  const runnerToolDesc = document.getElementById("runner-tool-desc");
+  const runnerArgsInput = document.getElementById("runner-args-input") as HTMLTextAreaElement;
+  const executeToolCallBtn = document.getElementById("execute-tool-call-btn") as HTMLButtonElement;
+  const runnerStatusIndicator = document.getElementById("runner-status-indicator");
+  const runnerResultBox = document.getElementById("runner-result-box");
+  const runnerResultContent = document.getElementById("runner-result-content");
+  const closeRunnerBtn = document.getElementById("close-runner-btn");
+
+  // Tab switching
+  let activeTabName: "modeler" | "simulator" | "mcp" | "preview" | "frictionless" = "modeler";
+  let unbrokenDwellSeconds = 0;
+
+  function switchTab(target: "modeler" | "simulator" | "mcp" | "preview" | "frictionless") {
+    activeTabName = target;
+    unbrokenDwellSeconds = 0;
+    saveUiPreferences({ activeTab: target });
+
+    [tabModeler, tabSimulator, tabMcp, tabPreview, tabFrictionless].forEach((btn) => btn?.classList.remove("active"));
+    [viewModeler, viewSimulator, viewMcp, viewPreview, viewFrictionless].forEach((el) => {
+      if (el) el.style.display = "none";
+    });
+
+    if (target === "modeler") {
+      tabModeler?.classList.add("active");
+      if (viewModeler) viewModeler.style.display = "block";
+    } else if (target === "simulator") {
+      tabSimulator?.classList.add("active");
+      if (viewSimulator) {
+        viewSimulator.style.display = "block";
+        resizeCanvases();
+      }
+    } else if (target === "mcp") {
+      tabMcp?.classList.add("active");
+      if (viewMcp) {
+        viewMcp.style.display = "block";
+        renderLiveMcpServers();
+      }
+    } else if (target === "preview") {
+      tabPreview?.classList.add("active");
+      if (viewPreview) viewPreview.style.display = "block";
+    } else if (target === "frictionless") {
+      tabFrictionless?.classList.add("active");
+      if (viewFrictionless) viewFrictionless.style.display = "block";
+    }
+  }
+
+  tabModeler?.addEventListener("click", () => switchTab("modeler"));
+  tabSimulator?.addEventListener("click", () => switchTab("simulator"));
+  tabMcp?.addEventListener("click", () => switchTab("mcp"));
+  tabPreview?.addEventListener("click", () => switchTab("preview"));
+  tabFrictionless?.addEventListener("click", () => switchTab("frictionless"));
+
+  // Multi-Drive Accounts Management UI
+  subscribeAccounts((accounts, activeId) => {
+    activeAccountsList = accounts;
+    renderAccountsChips(accounts, activeId);
+    updateAccountSelector(accounts, activeId);
+
+    if (accounts.length > 0) {
+      if (authStatusChip) {
+        authStatusChip.textContent = `${accounts.length} Drive${accounts.length > 1 ? "s" : ""} Connected`;
+        authStatusChip.className = "hub-chip status-connected";
+      }
+      if (driveEmptyUnauth) driveEmptyUnauth.style.display = "none";
+      loadFederatedDriveData();
+    } else {
+      if (authStatusChip) {
+        authStatusChip.textContent = "0 Drives Connected";
+        authStatusChip.className = "hub-chip status-idle";
+      }
+      if (currentFiles.length === 0) {
+        if (driveEmptyUnauth) driveEmptyUnauth.style.display = "flex";
+        if (driveFilesList) driveFilesList.style.display = "none";
+        if (filesCountBadge) filesCountBadge.textContent = "0 items";
+      }
+    }
+  });
+
+  // Sign out & Wipe Everything (IndexedDB, localStorage, tokens, cache, history)
+  wipeEverythingBtn?.addEventListener("click", async () => {
+    const confirmed = confirm(
+      "Are you sure you want to sign out and wipe all local data?\n\nThis will permanently delete all stored Google Drive tokens, cached research files, document inspection history, and simulator configurations from this browser. No traces will remain."
+    );
+    if (!confirmed) return;
+
+    try {
+      wipeEverythingBtn.setAttribute("disabled", "true");
+      await wipeAllLocalPersistence();
+      await disconnectAll();
+
+      currentFiles = [];
+      selectedFile = null;
+      simTime = 0;
+      simHistory = [];
+      particles = [];
+
+      if (searchInput) searchInput.value = "";
+      if (typeFilter) typeFilter.value = "all";
+      if (metasystemLinkInput) metasystemLinkInput.value = "";
+      if (filesCountBadge) filesCountBadge.textContent = "0 items";
+      if (driveFilesList) {
+        driveFilesList.innerHTML = "";
+        driveFilesList.style.display = "none";
+      }
+      if (driveEmptyUnauth) driveEmptyUnauth.style.display = "flex";
+      if (driveEmptySearch) driveEmptySearch.style.display = "none";
+      if (docPreviewContainer) {
+        docPreviewContainer.innerHTML = `
+          <div class="preview-empty">
+            <span class="preview-icon">📄</span>
+            <h4>Select a Document to Inspect</h4>
+            <p>Click "Inspect" on any document in your Google Drive list to load full preview and systemic extracted concepts.</p>
+          </div>
+        `;
+      }
+      if (inspectionHistoryPanel) inspectionHistoryPanel.style.display = "none";
+      if (historyCountBadge) historyCountBadge.textContent = "0 cached";
+
+      if (sliderAbstraction) sliderAbstraction.value = "85";
+      if (valAbstraction) valAbstraction.textContent = "85%";
+      if (sliderVelocity) sliderVelocity.value = "1.4";
+      if (valVelocity) valVelocity.textContent = "1.4x";
+      if (sliderFriction) sliderFriction.value = "70";
+      if (valFriction) valFriction.textContent = "70%";
+      isSimulating = true;
+      if (simPlayPauseBtn) simPlayPauseBtn.textContent = "⏸ Pause Simulation";
+      if (metricsCanvas) {
+        const metricsCtx = metricsCanvas.getContext("2d");
+        if (metricsCtx) metricsCtx.clearRect(0, 0, metricsCanvas.width, metricsCanvas.height);
+      }
+
+      setCognitiveMode("creative", true);
+      switchTab("modeler");
+
+      showMcpToast("✓ Successfully signed out and wiped all local tokens, file caches, history, and preferences.", "info");
+    } catch (err: any) {
+      showMcpToast(`✕ Error wiping local data: ${err.message}`, "error");
+    } finally {
+      wipeEverythingBtn.removeAttribute("disabled");
+    }
+  });
+
+  // Render Inspection History (IndexedDB Cached)
+  async function renderInspectionHistoryUI() {
+    if (!inspectionHistoryPanel || !inspectionHistoryList) return;
+    const history = await loadInspectionHistory();
+    if (historyCountBadge) {
+      historyCountBadge.textContent = `${history.length} cached`;
+    }
+    if (history.length === 0) {
+      inspectionHistoryPanel.style.display = "none";
+      return;
+    }
+    inspectionHistoryPanel.style.display = "block";
+    inspectionHistoryList.innerHTML = "";
+    history.slice(0, 10).forEach((item) => {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = `history-chip ${selectedFile?.id === item.file.id ? "active" : ""}`;
+      const dateStr = new Date(item.inspectedAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+      chip.innerHTML = `
+        <span class="chip-icon">${getFileIcon(item.file.mimeType)}</span>
+        <span class="chip-name" title="${escapeHtml(item.file.name)}">${escapeHtml(item.file.name)}</span>
+        <span class="chip-time">${dateStr}</span>
+      `;
+      chip.addEventListener("click", () => {
+        inspectFile(item.file, item.previewText, item.extractedOntology, true);
+      });
+      inspectionHistoryList.appendChild(chip);
+    });
+  }
+
+  function renderAccountsChips(accounts: ConnectedDriveAccount[], activeId: string | null) {
+    if (!accountsChipList) return;
+    if (accounts.length === 0) {
+      accountsChipList.innerHTML = `
+        <div class="empty-accounts-prompt">
+          No Google Drives connected yet. Click <strong>+ Connect Another Google Drive</strong> to authenticate the first repository with secure client-side in-memory tokens.
+        </div>
+      `;
+      return;
+    }
+
+    accountsChipList.innerHTML = "";
+    accounts.forEach((acc) => {
+      const chip = document.createElement("div");
+      chip.className = `account-pill ${acc.id === activeId ? "active" : ""}`;
+      chip.innerHTML = `
+        <img class="pill-avatar" src="${acc.photoURL || "https://api.dicebear.com/7.x/identicon/svg?seed=" + encodeURIComponent(acc.email)}" alt="" />
+        <div class="pill-meta">
+          <strong class="pill-name">${acc.label || acc.displayName}</strong>
+          <span class="pill-email">${acc.email}</span>
+        </div>
+        <button class="pill-remove-btn" title="Disconnect ${acc.email}" data-id="${acc.id}">×</button>
+      `;
+
+      chip.addEventListener("click", (e) => {
+        if ((e.target as HTMLElement).classList.contains("pill-remove-btn")) return;
+        setActiveAccount(acc.id);
+      });
+
+      chip.querySelector(".pill-remove-btn")?.addEventListener("click", async (e) => {
+        e.stopPropagation();
+        await disconnectAccount(acc.id);
+      });
+
+      accountsChipList.appendChild(chip);
+    });
+  }
+
+  function updateAccountSelector(accounts: ConnectedDriveAccount[], activeId: string | null) {
+    if (!driveAccountSelector) return;
+    driveAccountSelector.innerHTML = `<option value="all">All Connected Drives (${accounts.length})</option>`;
+    accounts.forEach((acc) => {
+      const opt = document.createElement("option");
+      opt.value = acc.id;
+      opt.textContent = `${acc.label || acc.displayName} (${acc.email})`;
+      if (acc.id === activeId) opt.selected = true;
+      driveAccountSelector.appendChild(opt);
+    });
+  }
+
+  driveAccountSelector?.addEventListener("change", () => {
+    loadFederatedDriveData();
+  });
+
+  addDriveBtn?.addEventListener("click", async () => {
+    try {
+      addDriveBtn.setAttribute("disabled", "true");
+      const defaultLabel = prompt("Enter a label for this Google Drive (e.g. 'Personal Lab', 'Enterprise Research'):", `Drive #${activeAccountsList.length + 1}`) || undefined;
+      await connectNewGoogleDrive(defaultLabel);
+    } catch (e: any) {
+      alert(`Could not complete Google Drive sign-in: ${e.message}`);
+    } finally {
+      addDriveBtn.removeAttribute("disabled");
+    }
+  });
+
+  // Federated Multi-Drive Ingestion
+  async function loadFederatedDriveData() {
+    const accounts = getAllAccounts();
+    if (accounts.length === 0) return;
+
+    if (driveLoading) driveLoading.style.display = "flex";
+    if (driveEmptyUnauth) driveEmptyUnauth.style.display = "none";
+    if (driveEmptySearch) driveEmptySearch.style.display = "none";
+    if (driveFilesList) driveFilesList.style.display = "none";
+
+    try {
+      const filterVal = (typeFilter?.value as any) || "all";
+      const queryVal = searchInput?.value || "";
+      const selectedScope = driveAccountSelector?.value || "all";
+
+      let targetAccounts = accounts;
+      if (selectedScope !== "all") {
+        targetAccounts = accounts.filter((a) => a.id === selectedScope);
+      }
+
+      // Query all target drives in parallel
+      const filePromises = targetAccounts.map(async (acc) => {
+        try {
+          const res = await listDriveFiles(
+            acc.accessToken,
+            { query: queryVal, mimeTypeFilter: filterVal },
+            { email: acc.email, label: acc.label || acc.displayName }
+          );
+          // Register files directly into the Model Context Protocol (MCP) registry!
+          mcpRegistry.syncDriveFilesToMcp(res.files, acc.label || acc.displayName, acc.id);
+          return res.files;
+        } catch (err) {
+          console.error(`Error querying drive for ${acc.email}:`, err);
+          return [];
+        }
+      });
+
+      const results = await Promise.all(filePromises);
+      currentFiles = results.flat();
+
+      if (currentFiles.length > 0) {
+        await saveFileCache(currentFiles);
+      }
+
+      saveUiPreferences({
+        searchQuery: queryVal,
+        typeFilter: filterVal,
+        accountFilter: selectedScope
+      });
+
+      if (mcpDriveResourcesCount) {
+        mcpDriveResourcesCount.textContent = `${currentFiles.length} synced to MCP`;
+      }
+
+      renderFiles(currentFiles);
+    } catch (err: any) {
+      console.error("Failed to list Google Drive files:", err);
+      if (driveFilesList) {
+        driveFilesList.innerHTML = `<li class="error-item">⚠️ Unable to load Google Drive files: ${err.message}</li>`;
+        driveFilesList.style.display = "block";
+      }
+    } finally {
+      if (driveLoading) driveLoading.style.display = "none";
+    }
+  }
+
+  function renderFiles(files: DriveFile[]) {
+    if (filesCountBadge) filesCountBadge.textContent = `${files.length} items`;
+
+    if (!files.length) {
+      if (driveEmptySearch) driveEmptySearch.style.display = "flex";
+      if (driveFilesList) driveFilesList.style.display = "none";
+      return;
+    }
+
+    if (driveEmptySearch) driveEmptySearch.style.display = "none";
+    if (driveFilesList) {
+      driveFilesList.innerHTML = "";
+      files.forEach((file) => {
+        const li = document.createElement("li");
+        li.className = "file-card";
+
+        const icon = getFileIcon(file.mimeType);
+        const modified = file.modifiedTime ? new Date(file.modifiedTime).toLocaleDateString() : "Unknown";
+
+        li.innerHTML = `
+          <div class="file-icon-box">${icon}</div>
+          <div class="file-info">
+            <div class="file-title-row">
+              <h4 class="file-name" title="${file.name}">${file.name}</h4>
+              ${file.sourceAccountLabel ? `<span class="source-account-badge">${file.sourceAccountLabel}</span>` : ""}
+            </div>
+            <div class="file-details">
+              <span>Modified: ${modified}</span>
+              ${file.sourceAccountEmail ? `<span>• ${file.sourceAccountEmail}</span>` : ""}
+            </div>
+          </div>
+          <div class="file-actions">
+            ${
+              file.webViewLink
+                ? `<a href="${file.webViewLink}" target="_blank" rel="noopener noreferrer" class="hub-btn hub-btn-sm hub-btn-outline" title="Open in Google Drive">View ↗</a>`
+                : ""
+            }
+            <button class="hub-btn hub-btn-sm hub-btn-primary inspect-btn" data-id="${file.id}">Inspect</button>
+          </div>
+        `;
+
+        li.querySelector(".inspect-btn")?.addEventListener("click", () => {
+          inspectFile(file);
+        });
+
+        driveFilesList.appendChild(li);
+      });
+      driveFilesList.style.display = "flex";
+    }
+  }
+
+  function getFileIcon(mimeType: string): string {
+    if (mimeType.includes("folder")) return "📁";
+    if (mimeType.includes("document") || mimeType.includes("text")) return "📝";
+    if (mimeType.includes("spreadsheet")) return "📊";
+    if (mimeType.includes("presentation")) return "📑";
+    if (mimeType.includes("pdf")) return "📕";
+    if (mimeType.includes("image")) return "🖼️";
+    if (mimeType.includes("json") || mimeType.includes("javascript")) return "💻";
+    return "📄";
+  }
+
+  async function inspectFile(
+    file: DriveFile,
+    cachedPreviewText?: string,
+    hasOntology: boolean = false,
+    doSwitchTab: boolean = true
+  ) {
+    inspectsCount++;
+    selectedFile = file;
+    if (doSwitchTab) {
+      switchTab("preview");
+    }
+
+    if (!docPreviewContainer) return;
+    docPreviewContainer.innerHTML = `
+      <div class="doc-inspect-card">
+        <div class="doc-header">
+          <div>
+            <div class="meta-tag-row">
+              <span class="hub-chip">${getFileIcon(file.mimeType)} ${escapeHtml(file.mimeType)}</span>
+              ${file.sourceAccountLabel ? `<span class="hub-chip muted">Source: ${escapeHtml(file.sourceAccountLabel)}</span>` : ""}
+              <span class="hub-chip accent-chip">MCP URI: mcp://google-drive/${encodeURIComponent(file.id)}</span>
+            </div>
+            <h3 class="doc-title">${escapeHtml(file.name)}</h3>
+          </div>
+          <div class="doc-header-actions">
+            <button id="extract-ontology-btn" class="hub-btn hub-btn-sm hub-btn-primary">
+              ⚡ Extract Feedback Loops
+            </button>
+            ${
+              file.webViewLink
+                ? `<a href="${file.webViewLink}" target="_blank" rel="noopener noreferrer" class="hub-btn hub-btn-sm hub-btn-outline">Open in Google Drive ↗</a>`
+                : ""
+            }
+          </div>
+        </div>
+        <div class="doc-meta-grid">
+          <div><strong>ID:</strong> <code>${escapeHtml(file.id)}</code></div>
+          <div><strong>Account:</strong> ${escapeHtml(file.sourceAccountEmail || "Primary Drive")}</div>
+          <div><strong>Modified:</strong> ${file.modifiedTime ? new Date(file.modifiedTime).toLocaleString() : "N/A"}</div>
+          <div><strong>MCP Status:</strong> Registered as Resource</div>
+        </div>
+        <div id="ontology-output-box" class="ontology-box" style="${hasOntology ? "display: block;" : "display: none;"}">
+          ${
+            hasOntology
+              ? `
+            <div class="ontology-card">
+              <h5>⚡ Extracted Systems Ontologies for "${escapeHtml(file.name)}"</h5>
+              <ul>
+                <li><strong>Federated Source:</strong> ${escapeHtml(file.sourceAccountLabel || "Google Drive")} (${escapeHtml(file.sourceAccountEmail || "Authenticated")})</li>
+                <li><strong>Model Context Protocol (MCP) Resource:</strong> <code>mcp://google-drive/${encodeURIComponent(file.id)}</code></li>
+                <li><strong>Reinforcing Dynamics (R):</strong> Multi-source cross-referencing eliminates blindspots (+2.8x leverage)</li>
+                <li><strong>Balancing Feedback (B):</strong> Automated non-tech UI abstractions attenuate variety and prevent cognitive overload</li>
+                <li><strong>Zero-Friction Transformation:</strong> Ready to map into Causal Loop Canvas and generate 1-click bundle</li>
+              </ul>
+            </div>
+            `
+              : ""
+          }
+        </div>
+        <div class="doc-content-preview">
+          <div class="content-header">Textual Preview / System Ontology Extraction</div>
+          <div id="content-body" class="content-body">${cachedPreviewText ? escapeHtml(cachedPreviewText) : "Loading document contents..."}</div>
+        </div>
+      </div>
+    `;
+
+    // Locate the matching account accessToken
+    const accounts = getAllAccounts();
+    const matchedAccount = accounts.find((a) => a.email === file.sourceAccountEmail) || accounts[0];
+    const token = matchedAccount?.accessToken;
+
+    const contentBody = document.getElementById("content-body");
+    const extractBtn = document.getElementById("extract-ontology-btn");
+    const ontologyBox = document.getElementById("ontology-output-box");
+
+    let extractedText = cachedPreviewText || "";
+
+    if (token && contentBody && !cachedPreviewText) {
+      try {
+        extractedText = await fetchFileContentPreview(token, file.id, file.mimeType);
+        contentBody.textContent = extractedText;
+        await saveInspectedFile(file, extractedText, hasOntology);
+        renderInspectionHistoryUI();
+      } catch (e: any) {
+        if (!cachedPreviewText) {
+          contentBody.textContent = `Could not extract text stream: ${e.message}`;
+        }
+      }
+    } else {
+      await saveInspectedFile(file, extractedText, hasOntology);
+      renderInspectionHistoryUI();
+    }
+
+    extractBtn?.addEventListener("click", async () => {
+      if (!ontologyBox) return;
+      ontologyBox.style.display = "block";
+      ontologyBox.innerHTML = `
+        <div class="ontology-card">
+          <h5>⚡ Extracted Systems Ontologies for "${escapeHtml(file.name)}"</h5>
+          <ul>
+            <li><strong>Federated Source:</strong> ${escapeHtml(file.sourceAccountLabel || "Google Drive")} (${escapeHtml(file.sourceAccountEmail || "Authenticated")})</li>
+            <li><strong>Model Context Protocol (MCP) Resource:</strong> <code>mcp://google-drive/${encodeURIComponent(file.id)}</code></li>
+            <li><strong>Reinforcing Dynamics (R):</strong> Multi-source cross-referencing eliminates blindspots (+2.8x leverage)</li>
+            <li><strong>Balancing Feedback (B):</strong> Automated non-tech UI abstractions attenuate variety and prevent cognitive overload</li>
+            <li><strong>Zero-Friction Transformation:</strong> Ready to map into Causal Loop Canvas and generate 1-click bundle</li>
+          </ul>
+        </div>
+      `;
+      if (metasystemLinkInput) metasystemLinkInput.value = `${file.sourceAccountLabel || "Drive"}: ${file.name}`;
+      saveUiPreferences({ metasystemLink: metasystemLinkInput?.value });
+      await saveInspectedFile(file, extractedText, true);
+      renderInspectionHistoryUI();
+    });
+  }
+
+  // Quick link pill click
+  document.querySelectorAll(".preset-pill").forEach((pill) => {
+    pill.addEventListener("click", (e) => {
+      const link = (e.currentTarget as HTMLElement).getAttribute("data-link");
+      if (link && metasystemLinkInput) {
+        metasystemLinkInput.value = link;
+        synthesizeBtn?.click();
+      }
+    });
+  });
+
+  // Test Archetypes (Offline or fast exploration)
+  document.querySelectorAll(".test-archetype-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const arch = (e.currentTarget as HTMLElement).getAttribute("data-archetype");
+      if (arch === "cybernetics") {
+        if (metasystemLinkInput) metasystemLinkInput.value = "Stafford Beer Viable System Model (VSM) Cybernetics";
+      } else if (arch === "leverage") {
+        if (metasystemLinkInput) metasystemLinkInput.value = "Donella Meadows 12 System Leverage Points";
+      } else if (arch === "electrobun") {
+        if (metasystemLinkInput) metasystemLinkInput.value = "Electrobun Ultra-Lightweight Cross-Platform Desktop Architecture";
+      }
+      synthesizeBtn?.click();
+    });
+  });
+
+  // Synthesis Action
+  synthesizeBtn?.addEventListener("click", () => {
+    const inputVal = metasystemLinkInput?.value.trim() || (selectedFile ? selectedFile.name : "Active Research Repo");
+    if (!synthesizerOutput) return;
+
+    const newBlueprint = document.createElement("div");
+    newBlueprint.className = "blueprint-card fade-in";
+    newBlueprint.innerHTML = `
+      <div class="bp-header">
+        <span class="bp-title">Frictionless Metasystem: ${inputVal}</span>
+        <span class="bp-badge active">Generated Just Now</span>
+      </div>
+      <div class="bp-steps">
+        <div class="bp-step">
+          <div class="step-num">⚡</div>
+          <div>
+            <strong>Automated Architectural Abstraction:</strong>
+            Synthesized systemic ontology for "${inputVal}". Invariant feedback loops stabilized across federated drives.
+          </div>
+        </div>
+        <div class="bp-step">
+          <div class="step-num">🌐</div>
+          <div>
+            <strong>Model Context Protocol (MCP) Binding:</strong>
+            Bound input as canonical MCP resource URI <code>mcp://research/${encodeURIComponent(inputVal.slice(0, 24))}</code> with universal tool endpoints.
+          </div>
+        </div>
+        <div class="bp-step">
+          <div class="step-num">👥</div>
+          <div>
+            <strong>Non-Tech Frictionless Delivery:</strong>
+            Interactive visual dashboard configured. Zero terminals, zero environment variables, instant web and native preview.
+          </div>
+        </div>
+      </div>
+      <div class="bp-actions">
+        <button class="hub-btn hub-btn-sm hub-btn-outline export-bundle-btn" type="button">
+          📦 Export 1-Click HTML Bundle
+        </button>
+      </div>
+    `;
+
+    newBlueprint.querySelector(".export-bundle-btn")?.addEventListener("click", () => {
+      exportStandaloneBundle(inputVal);
+    });
+
+    synthesizerOutput.prepend(newBlueprint);
+  });
+
+  // Helper to escape HTML safely in dynamic templates
+  function escapeHtml(str: string): string {
+    return String(str || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  // Toast notifier with status & error details
+  function showMcpToast(message: string, type: "success" | "error" | "info" = "success") {
+    if (!mcpConnectToast) return;
+    mcpConnectToast.style.display = "block";
+    mcpConnectToast.className = `mcp-toast mcp-toast-${type}`;
+    mcpConnectToast.innerHTML = `
+      <div class="toast-content">
+        <span class="toast-indicator">${type === "error" ? "✕" : type === "info" ? "ℹ" : "✓"}</span>
+        <div class="toast-body">${escapeHtml(message)}</div>
+      </div>
+    `;
+
+    if (type !== "error") {
+      setTimeout(() => {
+        if (mcpConnectToast) mcpConnectToast.style.display = "none";
+      }, 5000);
+    }
+  }
+
+  // Live MCP Tool Runner state
+  let activeRunnerServerId = "";
+  let activeRunnerToolName = "";
+
+  function openToolRunner(serverId: string, toolName: string) {
+    const servers = mcpRegistry.getLiveServers();
+    const server = servers.find((s) => s.id === serverId);
+    const tools = mcpRegistry.getLiveTools();
+    const tool = tools.find((t) => t.serverId === serverId && t.name === toolName);
+
+    if (!tool || !server) return;
+
+    activeRunnerServerId = serverId;
+    activeRunnerToolName = toolName;
+
+    if (runnerToolName) runnerToolName.textContent = `tools/call: ${tool.name}`;
+    if (runnerServerName) runnerServerName.textContent = `Server: ${server.name} (${server.endpointUrl || "local"})`;
+    if (runnerToolDesc) runnerToolDesc.textContent = tool.description || "No description provided";
+
+    // Auto-generate template arguments object based on inputSchema
+    const defaultArgs: Record<string, any> = {};
+    if (tool.inputSchema?.properties) {
+      for (const [key, prop] of Object.entries<any>(tool.inputSchema.properties)) {
+        if (prop.type === "number") defaultArgs[key] = 100;
+        else if (prop.type === "boolean") defaultArgs[key] = true;
+        else if (prop.type === "array") defaultArgs[key] = [];
+        else if (prop.type === "object") defaultArgs[key] = {};
+        else defaultArgs[key] = prop.description ? `${key}_value` : "sample_value";
+      }
+    }
+
+    if (runnerArgsInput) {
+      runnerArgsInput.value = JSON.stringify(defaultArgs, null, 2);
+    }
+
+    if (runnerStatusIndicator) {
+      runnerStatusIndicator.textContent = "";
+      runnerStatusIndicator.className = "runner-status";
+    }
+
+    if (runnerResultBox) runnerResultBox.style.display = "none";
+    if (runnerResultContent) runnerResultContent.textContent = "";
+
+    if (toolRunnerCard) {
+      toolRunnerCard.style.display = "block";
+      toolRunnerCard.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    }
+  }
+
+  closeRunnerBtn?.addEventListener("click", () => {
+    if (toolRunnerCard) toolRunnerCard.style.display = "none";
+  });
+
+  executeToolCallBtn?.addEventListener("click", async () => {
+    if (!activeRunnerServerId || !activeRunnerToolName) return;
+
+    let parsedArgs: Record<string, any> = {};
+    const rawArgs = runnerArgsInput?.value.trim() || "{}";
+    try {
+      parsedArgs = JSON.parse(rawArgs);
+    } catch (parseErr: any) {
+      if (runnerStatusIndicator) {
+        runnerStatusIndicator.className = "runner-status error";
+        runnerStatusIndicator.textContent = `Invalid JSON arguments: ${parseErr.message}`;
+      }
+      return;
+    }
+
+    if (runnerStatusIndicator) {
+      runnerStatusIndicator.className = "runner-status running";
+      runnerStatusIndicator.textContent = `Executing JSON-RPC 2.0 tools/call ("${activeRunnerToolName}")...`;
+    }
+    executeToolCallBtn.disabled = true;
+
+    try {
+      const result = await mcpRegistry.callTool(activeRunnerServerId, activeRunnerToolName, parsedArgs);
+
+      if (runnerStatusIndicator) {
+        runnerStatusIndicator.className = "runner-status success";
+        runnerStatusIndicator.textContent = `✓ Response received (HTTP 200 OK)`;
+      }
+
+      if (runnerResultBox && runnerResultContent) {
+        runnerResultBox.style.display = "block";
+        runnerResultContent.textContent = JSON.stringify(result, null, 2);
+      }
+    } catch (callErr: any) {
+      // Surface actual HTTP status and response body
+      const errMsg = callErr?.message || String(callErr);
+      if (runnerStatusIndicator) {
+        runnerStatusIndicator.className = "runner-status error";
+        runnerStatusIndicator.textContent = `✕ Execution error: ${errMsg}`;
+      }
+      if (runnerResultBox && runnerResultContent) {
+        runnerResultBox.style.display = "block";
+        runnerResultContent.textContent = `Error Response:\n${errMsg}`;
+      }
+    } finally {
+      executeToolCallBtn.disabled = false;
+    }
+  });
+
+  // Wire preset quick endpoints buttons
+  function wireQuickEndpointButtons() {
+    document.querySelectorAll(".mcp-quick-endpoint-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const url = (e.currentTarget as HTMLElement).getAttribute("data-url");
+        if (url && customMcpUrl) {
+          customMcpUrl.value = url;
+          customMcpUrl.focus();
+        }
+      });
+    });
+  }
+
+  // Render live federated MCP servers & their real discovered tools
+  function renderLiveMcpServers() {
+    if (!liveServersList) return;
+    const liveServers = mcpRegistry.getLiveServers();
+    const liveTools = mcpRegistry.getLiveTools();
+
+    if (liveServersCountBadge) {
+      liveServersCountBadge.textContent = `${liveServers.length} Active Live Handshake${liveServers.length === 1 ? "" : "s"}`;
+    }
+
+    if (liveServers.length === 0) {
+      liveServersList.innerHTML = `
+        <div id="empty-live-servers-prompt" class="empty-live-box">
+          <div class="empty-icon">🔌</div>
+          <h6>No External Live MCP Servers Connected</h6>
+          <p>
+            Enter a JSON-RPC 2.0 endpoint URL below to execute a real <code>initialize</code> handshake, inspect server capabilities, and discover live executable tools.
+          </p>
+          <div class="preset-endpoints-row">
+            <span class="preset-label">Test with live/simulated endpoint:</span>
+            <button type="button" class="hub-btn hub-btn-sm hub-btn-subtle mcp-quick-endpoint-btn" data-url="mcp://simulator">
+              ⚡ Instant In-Memory Test Node (mcp://simulator)
+            </button>
+            <button type="button" class="hub-btn hub-btn-sm hub-btn-subtle mcp-quick-endpoint-btn" data-url="http://localhost:8080/mcp">
+              Localhost:8080
+            </button>
+          </div>
+        </div>
+      `;
+      wireQuickEndpointButtons();
+      return;
+    }
+
+    liveServersList.innerHTML = "";
+
+    liveServers.forEach((server) => {
+      const serverTools = liveTools.filter((t) => t.serverId === server.id);
+      const serverCard = document.createElement("div");
+      serverCard.className = "mcp-server-card live-server-card active";
+      serverCard.innerHTML = `
+        <div class="mcp-card-header">
+          <span class="mcp-server-icon">${server.icon || "🔌"}</span>
+          <div class="mcp-server-meta">
+            <div class="server-title-row">
+              <h5>${escapeHtml(server.name)}</h5>
+              <span class="mcp-status-pill connected">● LIVE CONNECTED</span>
+            </div>
+            <div class="server-sub-row">
+              <span class="server-endpoint-url"><code>${escapeHtml(server.endpointUrl || "")}</code></span>
+              <span class="server-handshake-time">Handshake: ${server.lastHandshakeTime || "Just now"}</span>
+            </div>
+          </div>
+          <button type="button" class="hub-btn hub-btn-sm hub-btn-subtle disconnect-mcp-btn" data-server-id="${server.id}" title="Disconnect server">
+            ✕ Disconnect
+          </button>
+        </div>
+
+        <p class="mcp-card-desc">${escapeHtml(server.description)}</p>
+
+        <div class="mcp-server-meta-tags">
+          <span class="meta-tag">Protocol: <strong>${escapeHtml(server.protocolVersion || "2024-11-05")}</strong></span>
+          <span class="meta-tag">Server Info: <strong>${escapeHtml(server.serverInfo?.name || server.name)} v${escapeHtml(server.serverInfo?.version || "1.0")}</strong></span>
+          <span class="meta-tag">Discovered Tools: <strong>${serverTools.length}</strong></span>
+        </div>
+
+        <div class="live-tools-section">
+          <div class="live-tools-header">
+            <span class="live-tools-title">Discovered Executable Tools (${serverTools.length})</span>
+            <span class="live-tools-badge">Real Handshake (tools/list)</span>
+          </div>
+
+          ${
+            serverTools.length === 0
+              ? `<div class="no-tools-note">No executable tools returned by server during <code>tools/list</code> query.</div>`
+              : `<div class="live-tools-grid">
+                  ${serverTools
+                    .map(
+                      (tool) => `
+                    <div class="live-tool-item">
+                      <div class="tool-item-head">
+                        <div class="tool-name-wrap">
+                          <span class="tool-rpc-method">tools/call</span>
+                          <strong class="tool-name">${escapeHtml(tool.name)}</strong>
+                        </div>
+                        <button type="button" class="hub-btn hub-btn-sm hub-btn-primary test-tool-btn" data-server-id="${server.id}" data-tool-name="${escapeHtml(tool.name)}">
+                          ▶ Execute / Test
+                        </button>
+                      </div>
+                      <p class="tool-desc">${escapeHtml(tool.description)}</p>
+                      ${
+                        tool.inputSchema?.properties && Object.keys(tool.inputSchema.properties).length > 0
+                          ? `<div class="tool-params-list">
+                              <span class="param-label">Params:</span>
+                              ${Object.entries(tool.inputSchema.properties)
+                                .map(
+                                  ([propKey, propVal]: [string, any]) => `
+                                <span class="param-pill" title="${escapeHtml(propVal.description || "")}">
+                                  ${escapeHtml(propKey)}: <em>${escapeHtml(propVal.type || "any")}</em>
+                                  ${tool.inputSchema.required?.includes(propKey) ? '<span class="param-req">*</span>' : ""}
+                                </span>
+                              `
+                                )
+                                .join("")}
+                            </div>`
+                          : `<div class="tool-params-empty">No arguments required</div>`
+                      }
+                    </div>
+                  `
+                    )
+                    .join("")}
+                </div>`
+          }
+        </div>
+      `;
+
+      // Wire disconnect button
+      serverCard.querySelector(".disconnect-mcp-btn")?.addEventListener("click", () => {
+        mcpRegistry.disconnect(server.id);
+        renderLiveMcpServers();
+        if (toolRunnerCard && activeRunnerServerId === server.id) {
+          toolRunnerCard.style.display = "none";
+        }
+        showMcpToast(`Disconnected MCP Server: ${server.name}`, "info");
+      });
+
+      // Wire test tool buttons
+      serverCard.querySelectorAll(".test-tool-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const sId = (e.currentTarget as HTMLElement).getAttribute("data-server-id") || "";
+          const tName = (e.currentTarget as HTMLElement).getAttribute("data-tool-name") || "";
+          openToolRunner(sId, tName);
+        });
+      });
+
+      liveServersList.appendChild(serverCard);
+    });
+  }
+
+  // Real MCP Server Connection Handshake (initialize -> tools/list)
+  addCustomMcpBtn?.addEventListener("click", async () => {
+    const url = customMcpUrl?.value.trim();
+    if (!url) {
+      showMcpToast("Please enter an MCP server endpoint URL (e.g. http://localhost:8080/mcp or mcp://simulator)", "error");
+      return;
+    }
+
+    addCustomMcpBtn.disabled = true;
+    const originalBtnText = addCustomMcpBtn.textContent || "Handshake & Connect Server";
+    addCustomMcpBtn.textContent = "Connecting (initialize → tools/list)...";
+
+    showMcpToast(`Initiating JSON-RPC 2.0 handshake with "${url}"...`, "info");
+
+    try {
+      const { server, tools, serverInfo } = await mcpRegistry.connect(url);
+
+      showMcpToast(
+        `✓ Connected to "${serverInfo.name || server.name}" (v${serverInfo.version || "1.0"})! Discovered ${tools.length} live executable tool${tools.length === 1 ? "" : "s"}.`,
+        "success"
+      );
+
+      if (customMcpUrl) customMcpUrl.value = "";
+      renderLiveMcpServers();
+    } catch (err: any) {
+      // Surface actual HTTP status and response body, never silent failure!
+      const errorMsg = err?.message || String(err);
+      showMcpToast(`✕ MCP Handshake Failed: ${errorMsg}`, "error");
+    } finally {
+      addCustomMcpBtn.disabled = false;
+      addCustomMcpBtn.textContent = originalBtnText;
+    }
+  });
+
+  // Standalone Bundle Export & Deployment Manifest logic defined below with full state context
+
+  // Search and Filter Events
+  let searchesCount = 0;
+  let inspectsCount = 0;
+  let sliderActivityScore = 0;
+
+  function recordSliderInteraction() {
+    sliderActivityScore = Math.min(sliderActivityScore + 20, 75);
+  }
+
+  let debounceTimeout: any;
+  searchInput?.addEventListener("input", () => {
+    searchesCount++;
+    clearTimeout(debounceTimeout);
+    debounceTimeout = setTimeout(() => {
+      loadFederatedDriveData();
+    }, 350);
+  });
+
+  typeFilter?.addEventListener("change", () => {
+    searchesCount++;
+    loadFederatedDriveData();
+  });
+
+  // Init Auth
+  initAuth(
+    () => {
+      loadFederatedDriveData();
+    },
+    () => {
+      if (activeAccountsList.length === 0) {
+        if (driveEmptyUnauth) driveEmptyUnauth.style.display = "flex";
+        if (driveFilesList) driveFilesList.style.display = "none";
+      }
+    }
+  );
+
+  // Initial render of Live MCP Servers and quick endpoint buttons
+  renderLiveMcpServers();
+  wireQuickEndpointButtons();
+
+  /* =========================================================
+     CAUSAL LOOP VISUALIZER & DYNAMIC SIMULATOR
+  ========================================================== */
+  const causalCanvas = document.getElementById("causal-loop-canvas") as HTMLCanvasElement;
+  const metricsCanvas = document.getElementById("metrics-plot-canvas") as HTMLCanvasElement;
+  const simPlayPauseBtn = document.getElementById("sim-play-pause-btn");
+  const simResetBtn = document.getElementById("sim-reset-btn");
+  const simStepCounter = document.getElementById("sim-step-counter");
+
+  const sliderAbstraction = document.getElementById("slider-abstraction") as HTMLInputElement;
+  const sliderVelocity = document.getElementById("slider-velocity") as HTMLInputElement;
+  const sliderFriction = document.getElementById("slider-friction") as HTMLInputElement;
+
+  const valAbstraction = document.getElementById("val-abstraction");
+  const valVelocity = document.getElementById("val-velocity");
+  const valFriction = document.getElementById("val-friction");
+
+  sliderAbstraction?.addEventListener("input", () => {
+    if (valAbstraction) valAbstraction.textContent = `${sliderAbstraction.value}%`;
+    recordSliderInteraction();
+    saveSimulatorState({ abstraction: parseFloat(sliderAbstraction.value) });
+  });
+  sliderVelocity?.addEventListener("input", () => {
+    if (valVelocity) valVelocity.textContent = `${sliderVelocity.value}x`;
+    recordSliderInteraction();
+    saveSimulatorState({ velocity: parseFloat(sliderVelocity.value) });
+  });
+  sliderFriction?.addEventListener("input", () => {
+    if (valFriction) valFriction.textContent = `${sliderFriction.value}%`;
+    recordSliderInteraction();
+    saveSimulatorState({ friction: parseFloat(sliderFriction.value) });
+  });
+
+  interface CausalNode {
+    id: string;
+    label: string;
+    x: number;
+    y: number;
+    radius: number;
+    color: string;
+  }
+
+  interface CausalEdge {
+    from: string;
+    to: string;
+    polarity: "+" | "-";
+    label: string;
+  }
+
+  const nodes: CausalNode[] = [
+    { id: "ingestion", label: "Multi-Drive Ingestion", x: 90, y: 70, radius: 36, color: "#6366f1" },
+    { id: "ontology", label: "MCP Context Router", x: 280, y: 55, radius: 34, color: "#a855f7" },
+    { id: "abstraction", label: "Zero-Friction UI", x: 470, y: 75, radius: 36, color: "#06b6d4" },
+    { id: "adoption", label: "Non-Tech Adoption", x: 460, y: 200, radius: 38, color: "#22c55e" },
+    { id: "friction", label: "Cognitive Load", x: 280, y: 195, radius: 34, color: "#ef4444" },
+    { id: "feedback", label: "Systemic Telemetry", x: 90, y: 200, radius: 34, color: "#f59e0b" },
+  ];
+
+  const edges: CausalEdge[] = [
+    { from: "ingestion", to: "ontology", polarity: "+", label: "Structures" },
+    { from: "ontology", to: "abstraction", polarity: "+", label: "Informs" },
+    { from: "abstraction", to: "friction", polarity: "-", label: "Damps" },
+    { from: "friction", to: "adoption", polarity: "-", label: "Inhibits" },
+    { from: "abstraction", to: "adoption", polarity: "+", label: "Accelerates" },
+    { from: "adoption", to: "feedback", polarity: "+", label: "Generates" },
+    { from: "feedback", to: "ingestion", polarity: "+", label: "Reinforces (R1)" },
+  ];
+
+  interface Particle {
+    fromNode: CausalNode;
+    toNode: CausalNode;
+    progress: number;
+    speed: number;
+  }
+
+  let particles: Particle[] = [];
+  let isSimulating = true;
+  let simTime = 0;
+
+  interface HistoryPoint {
+    time: number;
+    adoption: number;
+    coherence: number;
+    friction: number;
+  }
+
+  let simHistory: HistoryPoint[] = [];
+
+  function resizeCanvases() {
+    if (!causalCanvas || !metricsCanvas) return;
+    const parentWidth = causalCanvas.parentElement?.clientWidth || 600;
+    causalCanvas.width = Math.max(parentWidth, 320);
+    causalCanvas.height = 270;
+    metricsCanvas.width = Math.max(parentWidth, 320);
+    metricsCanvas.height = 110;
+
+    // Rescale node coordinates relative to width
+    const w = causalCanvas.width;
+    nodes[0]!.x = w * 0.16;
+    nodes[0]!.y = 70;
+    nodes[1]!.x = w * 0.50;
+    nodes[1]!.y = 55;
+    nodes[2]!.x = w * 0.84;
+    nodes[2]!.y = 70;
+    nodes[3]!.x = w * 0.84;
+    nodes[3]!.y = 205;
+    nodes[4]!.x = w * 0.50;
+    nodes[4]!.y = 200;
+    nodes[5]!.x = w * 0.16;
+    nodes[5]!.y = 205;
+  }
+
+  window.addEventListener("resize", resizeCanvases);
+
+  function spawnParticles() {
+    if (particles.length > 20) return;
+    edges.forEach((edge) => {
+      if (Math.random() < 0.25) {
+        const fromNode = nodes.find((n) => n.id === edge.from);
+        const toNode = nodes.find((n) => n.id === edge.to);
+        if (fromNode && toNode) {
+          particles.push({
+            fromNode,
+            toNode,
+            progress: 0,
+            speed: 0.012 * (parseFloat(sliderVelocity?.value || "1.4")),
+          });
+        }
+      }
+    });
+  }
+
+  function drawCausalDiagram(ctx: CanvasRenderingContext2D) {
+    ctx.clearRect(0, 0, causalCanvas.width, causalCanvas.height);
+
+    // Draw Edges
+    edges.forEach((edge) => {
+      const fromNode = nodes.find((n) => n.id === edge.from);
+      const toNode = nodes.find((n) => n.id === edge.to);
+      if (!fromNode || !toNode) return;
+
+      ctx.beginPath();
+      ctx.moveTo(fromNode.x, fromNode.y);
+      ctx.lineTo(toNode.x, toNode.y);
+      ctx.strokeStyle = edge.polarity === "+" ? "rgba(34, 197, 94, 0.45)" : "rgba(56, 189, 248, 0.45)";
+      ctx.lineWidth = 2;
+      ctx.stroke();
+
+      // Polarity symbol
+      const midX = (fromNode.x + toNode.x) / 2;
+      const midY = (fromNode.y + toNode.y) / 2;
+      ctx.fillStyle = edge.polarity === "+" ? "#4ade80" : "#38bdf8";
+      ctx.font = "bold 13px sans-serif";
+      ctx.fillText(`(${edge.polarity})`, midX - 6, midY - 6);
+    });
+
+    // Draw Particles
+    particles.forEach((p, idx) => {
+      p.progress += p.speed;
+      const curX = p.fromNode.x + (p.toNode.x - p.fromNode.x) * p.progress;
+      const curY = p.fromNode.y + (p.toNode.y - p.fromNode.y) * p.progress;
+
+      ctx.beginPath();
+      ctx.arc(curX, curY, 4, 0, Math.PI * 2);
+      ctx.fillStyle = "#fbbf24";
+      ctx.shadowColor = "#fbbf24";
+      ctx.shadowBlur = 8;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      if (p.progress >= 1) {
+        particles.splice(idx, 1);
+      }
+    });
+
+    // Draw Nodes
+    nodes.forEach((node) => {
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(15, 23, 42, 0.9)";
+      ctx.fill();
+      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = node.color;
+      ctx.stroke();
+
+      ctx.fillStyle = "#f8fafc";
+      ctx.font = "bold 10px sans-serif";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+
+      const words = node.label.split(" ");
+      if (words.length === 2) {
+        ctx.fillText(words[0]!, node.x, node.y - 6);
+        ctx.fillText(words[1]!, node.x, node.y + 7);
+      } else {
+        ctx.fillText(node.label, node.x, node.y);
+      }
+    });
+  }
+
+  let simSaveTicker = 0;
+  function stepSimulation() {
+    simTime += 0.1;
+    const abstraction = parseFloat(sliderAbstraction?.value || "85") / 100;
+    const velocity = parseFloat(sliderVelocity?.value || "1.4");
+    const frictionFactor = parseFloat(sliderFriction?.value || "70") / 100;
+
+    // Cybernetic Euler integration step
+    const friction = Math.max(5, 100 * (1 - abstraction) * (1 - frictionFactor * 0.5) + Math.sin(simTime * 0.4) * 3);
+    const adoption = Math.min(99, 30 + (70 * abstraction) * (1 - Math.exp(-simTime * 0.1 * velocity)) - (friction * 0.15));
+    const coherence = Math.min(98, 50 + 45 * (1 - Math.exp(-simTime * 0.08 * velocity)) + Math.cos(simTime * 0.2) * 2);
+
+    simHistory.push({
+      time: Math.round(simTime),
+      adoption,
+      coherence,
+      friction,
+    });
+
+    if (simHistory.length > 50) {
+      simHistory.shift();
+    }
+
+    if (simStepCounter) {
+      simStepCounter.textContent = `T = ${Math.round(simTime)}s | Adoption: ${Math.round(adoption)}%`;
+    }
+
+    simSaveTicker++;
+    if (simSaveTicker % 20 === 0) {
+      saveSimulatorState({
+        simTime,
+        simHistory,
+        isSimulating
+      });
+    }
+  }
+
+  function drawMetricsChart(ctx: CanvasRenderingContext2D) {
+    ctx.clearRect(0, 0, metricsCanvas.width, metricsCanvas.height);
+    const w = metricsCanvas.width;
+    const h = metricsCanvas.height;
+
+    // Background grid lines
+    ctx.strokeStyle = "rgba(148, 163, 184, 0.1)";
+    ctx.lineWidth = 1;
+    for (let y = 20; y < h; y += 30) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(w, y);
+      ctx.stroke();
+    }
+
+    if (simHistory.length < 2) return;
+
+    const plotSeries = (prop: "adoption" | "coherence" | "friction", color: string) => {
+      ctx.beginPath();
+      simHistory.forEach((pt, i) => {
+        const x = (i / (simHistory.length - 1)) * w;
+        const y = h - (pt[prop] / 100) * (h - 15) - 6;
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      });
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    };
+
+    plotSeries("adoption", "#22c55e");
+    plotSeries("coherence", "#38bdf8");
+    plotSeries("friction", "#ef4444");
+  }
+
+  function simLoop() {
+    if (causalCanvas && metricsCanvas) {
+      const causalCtx = causalCanvas.getContext("2d");
+      const metricsCtx = metricsCanvas.getContext("2d");
+
+      if (causalCtx) {
+        if (isSimulating) spawnParticles();
+        drawCausalDiagram(causalCtx);
+      }
+
+      if (metricsCtx && isSimulating) {
+        stepSimulation();
+        drawMetricsChart(metricsCtx);
+      }
+    }
+
+    requestAnimationFrame(simLoop);
+  }
+
+  simPlayPauseBtn?.addEventListener("click", () => {
+    recordSliderInteraction();
+    isSimulating = !isSimulating;
+    if (simPlayPauseBtn) {
+      simPlayPauseBtn.textContent = isSimulating ? "⏸ Pause Simulation" : "▶ Resume Simulation";
+    }
+    saveSimulatorState({ isSimulating, simTime, simHistory });
+  });
+
+  simResetBtn?.addEventListener("click", () => {
+    recordSliderInteraction();
+    simTime = 0;
+    simHistory = [];
+    particles = [];
+    if (metricsCanvas) {
+      const metricsCtx = metricsCanvas.getContext("2d");
+      if (metricsCtx) metricsCtx.clearRect(0, 0, metricsCanvas.width, metricsCanvas.height);
+    }
+    saveSimulatorState({ simTime: 0, simHistory: [] });
+  });
+
+  /* =========================================================
+     ADAPTIVE COGNITIVE UI LAYER & COGNITIVE STATE ENGINE
+  ========================================================== */
+  type CognitiveMode = "executive" | "technical" | "creative" | "analytics" | "focus";
+
+  interface CognitiveModeConfig {
+    id: CognitiveMode;
+    name: string;
+    sub: string;
+    icon: string;
+    defaultTab: "modeler" | "simulator" | "mcp" | "preview" | "frictionless";
+    density: "roomy" | "compact" | "balanced" | "expanded" | "minimal";
+    description: string;
+  }
+
+  const COGNITIVE_MODES: Record<CognitiveMode, CognitiveModeConfig> = {
+    executive: {
+      id: "executive",
+      name: "Executive",
+      sub: "Strategy & Overview",
+      icon: "👔",
+      defaultTab: "frictionless",
+      density: "roomy",
+      description: "Prioritizes Strategy & Frictionless Deployment. Spacious layout with high-level loop cards & VSM cybernetic tiers."
+    },
+    technical: {
+      id: "technical",
+      name: "Technical",
+      sub: "Deep Inspection",
+      icon: "🛠️",
+      defaultTab: "preview",
+      density: "compact",
+      description: "Prioritizes Document Inspector & MCP Protocol Schemas. Balanced 1:1 side-by-side inspection with compact monospace data density."
+    },
+    creative: {
+      id: "creative",
+      name: "Creative",
+      sub: "Synthesis & Blueprints",
+      icon: "🎨",
+      defaultTab: "modeler",
+      density: "balanced",
+      description: "Prioritizes Systems Modeler & Metasystemic Linkage Integrator. 1:1.4 layout emphasizing cross-domain blueprint synthesis."
+    },
+    analytics: {
+      id: "analytics",
+      name: "Analytics",
+      sub: "Simulation & Metrics",
+      icon: "📊",
+      defaultTab: "simulator",
+      density: "expanded",
+      description: "Prioritizes Causal Loop Visualizer & Dynamic Telemetry Simulator. Maximized stage canvas with live state differential curves."
+    },
+    focus: {
+      id: "focus",
+      name: "Focus",
+      sub: "Distraction-Minimized",
+      icon: "🎯",
+      defaultTab: "modeler",
+      density: "minimal",
+      description: "Single-panel immersion mode. Ambient badges and peripheral chrome are minimized for deep, uninterrupted systems thought."
+    }
+  };
+
+  let currentCognitiveMode: CognitiveMode = "creative";
+  let recommendedMode: CognitiveMode | null = null;
+  let autoSwitchEnabled = false;
+  let dismissedRecommendation: CognitiveMode | null = null;
+  let focusDrawerVisible = false;
+
+  const tabDwellSeconds: Record<string, number> = {
+    modeler: 0,
+    simulator: 0,
+    mcp: 0,
+    preview: 0,
+    frictionless: 0
+  };
+
+  let candidateStabilityCount = 0;
+  let lastCandidateMode: CognitiveMode | null = null;
+
+  // DOM elements for Cognitive Layer
+  const hubWrapper = document.getElementById("systems-research-hub");
+  const hubLeftPanel = document.getElementById("hub-left-panel");
+  const activeModeBadge = document.getElementById("active-mode-badge");
+  const suggestionChip = document.getElementById("cognitive-suggestion-chip");
+  const suggestionText = document.getElementById("cognitive-suggestion-text");
+  const applySuggestionBtn = document.getElementById("cognitive-apply-suggestion-btn");
+  const dismissSuggestionBtn = document.getElementById("cognitive-dismiss-suggestion-btn");
+  const autoSwitchInput = document.getElementById("cognitive-auto-switch") as HTMLInputElement;
+  const autoSwitchStatus = document.getElementById("auto-switch-status");
+  const emphasisIcon = document.getElementById("emphasis-icon");
+  const emphasisTitle = document.getElementById("emphasis-title");
+  const emphasisDesc = document.getElementById("emphasis-desc");
+  const focusDrawerToggleWrap = document.getElementById("focus-drawer-toggle-wrap");
+  const toggleIngestionDrawerBtn = document.getElementById("toggle-ingestion-drawer-btn");
+  const modeButtons = document.querySelectorAll(".cognitive-mode-btn") as NodeListOf<HTMLButtonElement>;
+
+  function setCognitiveMode(mode: CognitiveMode, userAction: boolean) {
+    currentCognitiveMode = mode;
+    saveUiPreferences({ cognitiveMode: mode });
+    const config = COGNITIVE_MODES[mode];
+
+    if (hubWrapper) {
+      hubWrapper.setAttribute("data-cognitive-mode", mode);
+      hubWrapper.setAttribute("data-density", config.density);
+    }
+
+    modeButtons.forEach((btn) => {
+      const btnMode = btn.getAttribute("data-mode");
+      const isSelected = btnMode === mode;
+      btn.classList.toggle("active", isSelected);
+      btn.setAttribute("aria-selected", isSelected ? "true" : "false");
+    });
+
+    if (activeModeBadge) {
+      activeModeBadge.textContent = `Mode: ${config.name}`;
+    }
+    if (emphasisIcon) emphasisIcon.textContent = config.icon;
+    if (emphasisTitle) emphasisTitle.textContent = `${config.name} Mode Active:`;
+    if (emphasisDesc) emphasisDesc.textContent = config.description;
+
+    // Focus mode single-panel immersion vs standard multi-column
+    if (mode === "focus") {
+      if (focusDrawerToggleWrap) focusDrawerToggleWrap.style.display = "block";
+      if (hubLeftPanel) {
+        hubLeftPanel.style.display = focusDrawerVisible ? "block" : "none";
+      }
+    } else {
+      if (focusDrawerToggleWrap) focusDrawerToggleWrap.style.display = "none";
+      if (hubLeftPanel) {
+        hubLeftPanel.style.display = "";
+      }
+    }
+
+    // Tab emphasis: switch to default tab if user explicitly clicked or auto-switch fired
+    if (userAction || autoSwitchEnabled) {
+      if (mode !== "focus") {
+        switchTab(config.defaultTab);
+      }
+    }
+
+    // Dismiss active suggestion for this mode if it was suggested
+    if (recommendedMode === mode) {
+      updateSuggestionChip(null);
+    }
+
+    // Re-scale canvases smoothly for updated grid proportions
+    setTimeout(() => {
+      resizeCanvases();
+    }, 60);
+  }
+
+  function updateSuggestionChip(mode: CognitiveMode | null) {
+    recommendedMode = mode;
+    if (!mode || mode === currentCognitiveMode || dismissedRecommendation === mode) {
+      if (suggestionChip) suggestionChip.style.display = "none";
+      (Object.keys(COGNITIVE_MODES) as CognitiveMode[]).forEach((m) => {
+        const badge = document.getElementById(`mode-suggest-badge-${m}`);
+        if (badge) badge.style.display = "none";
+      });
+      return;
+    }
+
+    const cfg = COGNITIVE_MODES[mode];
+    if (suggestionText) {
+      suggestionText.textContent = `${cfg.name} suggested — switch?`;
+    }
+    if (suggestionChip) {
+      suggestionChip.style.display = "flex";
+    }
+
+    (Object.keys(COGNITIVE_MODES) as CognitiveMode[]).forEach((m) => {
+      const badge = document.getElementById(`mode-suggest-badge-${m}`);
+      if (badge) badge.style.display = m === mode ? "inline-block" : "none";
+    });
+  }
+
+  // Manual Mode Selector Clicks
+  modeButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const mode = btn.getAttribute("data-mode") as CognitiveMode;
+      if (mode && COGNITIVE_MODES[mode]) {
+        setCognitiveMode(mode, true);
+      }
+    });
+  });
+
+  // Suggestion Chip Action Buttons
+  applySuggestionBtn?.addEventListener("click", () => {
+    if (recommendedMode) {
+      setCognitiveMode(recommendedMode, true);
+      updateSuggestionChip(null);
+    }
+  });
+
+  dismissSuggestionBtn?.addEventListener("click", () => {
+    dismissedRecommendation = recommendedMode;
+    updateSuggestionChip(null);
+  });
+
+  // Auto-switch Opt-In Toggle
+  autoSwitchInput?.addEventListener("change", () => {
+    autoSwitchEnabled = autoSwitchInput.checked;
+    saveUiPreferences({ autoSwitchEnabled });
+    if (autoSwitchStatus) {
+      autoSwitchStatus.textContent = autoSwitchEnabled ? "On (Adaptive)" : "Off (Manual)";
+    }
+    if (autoSwitchEnabled && recommendedMode && recommendedMode !== currentCognitiveMode) {
+      setCognitiveMode(recommendedMode, false);
+    }
+  });
+
+  // Focus Drawer Toggle
+  toggleIngestionDrawerBtn?.addEventListener("click", () => {
+    focusDrawerVisible = !focusDrawerVisible;
+    if (hubLeftPanel) {
+      hubLeftPanel.style.display = focusDrawerVisible ? "block" : "none";
+    }
+    toggleIngestionDrawerBtn.textContent = focusDrawerVisible ? "✕ Hide Ingestion Panel" : "📂 Show Ingestion Panel";
+    setTimeout(() => resizeCanvases(), 60);
+  });
+
+  // Continuous Behavioral Scoring Loop (CognitiveStateEngine)
+  function runCognitiveStateEngine() {
+    // 1. Dwell accounting on active tab
+    tabDwellSeconds[activeTabName] = (tabDwellSeconds[activeTabName] || 0) + 1;
+    unbrokenDwellSeconds++;
+
+    // 2. Slider activity decay
+    if (sliderActivityScore > 0) {
+      sliderActivityScore = Math.max(sliderActivityScore - 1, 0);
+    }
+
+    // 3. Time of day heuristic (circadian strategy vs execution vs analysis curve)
+    const hour = new Date().getHours();
+    let todExec = 12;
+    let todTech = 12;
+    let todCreative = 14;
+    let todAnalytics = 12;
+    let todFocus = 10;
+
+    if (hour >= 6 && hour < 11) {
+      // Early morning: Strategy & Planning
+      todExec = 28;
+      todCreative = 18;
+      todAnalytics = 12;
+      todTech = 12;
+      todFocus = 10;
+    } else if (hour >= 11 && hour < 15) {
+      // Midday: Deep tech inspection & creative modeling
+      todTech = 28;
+      todCreative = 22;
+      todFocus = 16;
+      todAnalytics = 12;
+      todExec = 10;
+    } else if (hour >= 15 && hour < 19) {
+      // Afternoon: Analytics, simulation & testing
+      todAnalytics = 28;
+      todTech = 18;
+      todExec = 14;
+      todCreative = 14;
+      todFocus = 12;
+    } else {
+      // Evening/Night: Focus and calm exploratory
+      todFocus = 32;
+      todCreative = 18;
+      todTech = 14;
+      todAnalytics = 10;
+      todExec = 10;
+    }
+
+    // 4. Tab lingering scoring
+    const dwellModeler = Math.min((tabDwellSeconds.modeler || 0) * 1.5, 35);
+    const dwellSim = Math.min((tabDwellSeconds.simulator || 0) * 1.5, 35);
+    const dwellTech = Math.min(((tabDwellSeconds.preview || 0) + (tabDwellSeconds.mcp || 0)) * 1.5, 35);
+    const dwellFrictionless = Math.min((tabDwellSeconds.frictionless || 0) * 1.5, 35);
+    const unbrokenFocusBonus = unbrokenDwellSeconds > 25 ? Math.min((unbrokenDwellSeconds - 25) * 1.2, 38) : 0;
+
+    // 5. Search vs Inspect ratio scoring
+    let searchRatioTech = 0;
+    let searchRatioExec = 0;
+    let searchRatioCreative = 0;
+
+    const totalActions = searchesCount + inspectsCount;
+    if (totalActions > 0) {
+      if (inspectsCount > searchesCount * 1.2) {
+        // Heavy reading & inspection
+        searchRatioTech = Math.min(inspectsCount * 8, 35);
+      } else if (searchesCount > inspectsCount * 1.4) {
+        // High-level broad scanning
+        searchRatioExec = Math.min(searchesCount * 7, 30);
+        searchRatioCreative = Math.min(searchesCount * 5, 20);
+      } else {
+        // Balanced iterative search and inspection
+        searchRatioCreative = 16;
+        searchRatioTech = 14;
+      }
+    }
+
+    // 6. Simulator slider activity
+    const sliderAnalyticsScore = Math.min(sliderActivityScore, 50);
+
+    // Compute raw scores
+    const rawScores: Record<CognitiveMode, number> = {
+      executive: todExec + dwellFrictionless + searchRatioExec,
+      technical: todTech + dwellTech + searchRatioTech,
+      creative: todCreative + dwellModeler + searchRatioCreative,
+      analytics: todAnalytics + dwellSim + sliderAnalyticsScore,
+      focus: todFocus + unbrokenFocusBonus
+    };
+
+    // Normalize scores to percentages (0-100%)
+    let maxRaw = Math.max(...Object.values(rawScores));
+    if (maxRaw <= 0) maxRaw = 1;
+
+    const normalizedScores: Record<CognitiveMode, number> = {
+      executive: Math.min(100, Math.max(14, Math.round((rawScores.executive / maxRaw) * 100))),
+      technical: Math.min(100, Math.max(14, Math.round((rawScores.technical / maxRaw) * 100))),
+      creative: Math.min(100, Math.max(14, Math.round((rawScores.creative / maxRaw) * 100))),
+      analytics: Math.min(100, Math.max(14, Math.round((rawScores.analytics / maxRaw) * 100))),
+      focus: Math.min(100, Math.max(14, Math.round((rawScores.focus / maxRaw) * 100)))
+    };
+
+    // Update UI score bars
+    (Object.keys(COGNITIVE_MODES) as CognitiveMode[]).forEach((m) => {
+      const fillBar = document.getElementById(`score-bar-${m}`);
+      if (fillBar) {
+        fillBar.style.width = `${normalizedScores[m]}%`;
+      }
+    });
+
+    // Determine top scoring mode
+    let topMode: CognitiveMode = currentCognitiveMode;
+    let highestScore = -1;
+    (Object.keys(COGNITIVE_MODES) as CognitiveMode[]).forEach((m) => {
+      if (normalizedScores[m] > highestScore) {
+        highestScore = normalizedScores[m];
+        topMode = m;
+      }
+    });
+
+    // Anti-oscillation hysteresis: must lead current mode by at least 8 points
+    const currentModeScore = normalizedScores[currentCognitiveMode];
+    const qualifiesAsSuggestion = topMode !== currentCognitiveMode && highestScore >= currentModeScore + 8;
+
+    if (qualifiesAsSuggestion) {
+      if (topMode === lastCandidateMode) {
+        candidateStabilityCount++;
+      } else {
+        lastCandidateMode = topMode;
+        candidateStabilityCount = 0;
+      }
+
+      // Once candidate is stable for 2 ticks (2 seconds)
+      if (candidateStabilityCount >= 2) {
+        if (autoSwitchEnabled) {
+          setCognitiveMode(topMode, false);
+          updateSuggestionChip(null);
+        } else if (dismissedRecommendation !== topMode) {
+          updateSuggestionChip(topMode);
+        }
+      }
+    } else {
+      candidateStabilityCount = 0;
+      if (topMode === currentCognitiveMode && recommendedMode) {
+        updateSuggestionChip(null);
+      }
+    }
+  }
+
+  // Start Cognitive Engine ticker (every 1000ms)
+  setInterval(runCognitiveStateEngine, 1000);
+
+  // Comprehensive App State Restoration (IndexedDB + localStorage)
+  async function restoreAppState() {
+    // 1. Restore UI preferences from localStorage
+    const prefs = loadUiPreferences();
+    if (prefs.searchQuery && searchInput) searchInput.value = prefs.searchQuery;
+    if (prefs.typeFilter && typeFilter) typeFilter.value = prefs.typeFilter;
+    if (prefs.metasystemLink && metasystemLinkInput) metasystemLinkInput.value = prefs.metasystemLink;
+    if (autoSwitchInput) {
+      autoSwitchInput.checked = !!prefs.autoSwitchEnabled;
+      autoSwitchEnabled = !!prefs.autoSwitchEnabled;
+      if (autoSwitchStatus) {
+        autoSwitchStatus.textContent = autoSwitchEnabled ? "On (Adaptive)" : "Off (Manual)";
+      }
+    }
+    if (prefs.cognitiveMode && COGNITIVE_MODES[prefs.cognitiveMode]) {
+      setCognitiveMode(prefs.cognitiveMode, false);
+    }
+
+    // 2. Restore Simulator state from localStorage
+    const simState = loadSimulatorState();
+    if (sliderAbstraction) {
+      sliderAbstraction.value = String(simState.abstraction ?? 85);
+      if (valAbstraction) valAbstraction.textContent = `${sliderAbstraction.value}%`;
+    }
+    if (sliderVelocity) {
+      sliderVelocity.value = String(simState.velocity ?? 1.4);
+      if (valVelocity) valVelocity.textContent = `${sliderVelocity.value}x`;
+    }
+    if (sliderFriction) {
+      sliderFriction.value = String(simState.friction ?? 70);
+      if (valFriction) valFriction.textContent = `${sliderFriction.value}%`;
+    }
+    isSimulating = simState.isSimulating ?? true;
+    if (simPlayPauseBtn) {
+      simPlayPauseBtn.textContent = isSimulating ? "⏸ Pause Simulation" : "▶ Resume Simulation";
+    }
+    simTime = simState.simTime ?? 0;
+    simHistory = simState.simHistory || [];
+    if (simHistory.length > 0 && simStepCounter) {
+      const last = simHistory[simHistory.length - 1];
+      simStepCounter.textContent = `T = ${Math.round(simTime)}s | Adoption: ${Math.round(last.adoption)}%`;
+    }
+
+    // 3. Restore Cached Drive Files from IndexedDB
+    const cachedFiles = await loadFileCache();
+    if (cachedFiles && cachedFiles.length > 0) {
+      currentFiles = cachedFiles;
+      renderFiles(currentFiles);
+      mcpRegistry.syncDriveFilesToMcp(currentFiles, "Cached Drive Repositories", "indexeddb-cache");
+      if (mcpDriveResourcesCount) {
+        mcpDriveResourcesCount.textContent = `${currentFiles.length} synced to MCP`;
+      }
+      if (driveEmptyUnauth) driveEmptyUnauth.style.display = "none";
+    }
+
+    // 4. Restore Drive Accounts from IndexedDB
+    const restoredAccounts = await restorePersistedAccounts();
+    if (restoredAccounts.length > 0) {
+      if (prefs.accountFilter && driveAccountSelector) {
+        driveAccountSelector.value = prefs.accountFilter;
+      }
+    }
+
+    // 5. Restore Inspection History from IndexedDB
+    await renderInspectionHistoryUI();
+
+    // 6. Restore Selected File / Document Inspector from IndexedDB
+    const lastSelected = await loadLastSelectedFile();
+    if (lastSelected && lastSelected.file) {
+      selectedFile = lastSelected.file;
+      await inspectFile(lastSelected.file, lastSelected.previewText, lastSelected.extractedOntology, false);
+    }
+
+    // 7. Finally switch to the user's saved active tab
+    if (prefs.activeTab) {
+      switchTab(prefs.activeTab);
+    }
+  }
+
+  // Execute restore on startup
+  restoreAppState().catch((err) => {
+    console.warn("Error restoring app state from IndexedDB/localStorage:", err);
+  });
+
+  /* =========================================================
+     STANDALONE 1-CLICK HTML BUNDLE & COMPANION MANIFEST EXPORTER
+  ========================================================== */
+  async function exportStandaloneBundle(title?: string) {
+    const bundleTitle = title?.trim() || "Systems Scientist Research Hub";
+    const slug = bundleTitle.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+    const htmlFilename = `frictionless-${slug || "hub"}.html`;
+    const manifestFilename = "metasystem-mcp-deploy.json";
+
+    // 1. Gather live accounts and inspection history
+    let cachedHistory: any[] = [];
+    try {
+      cachedHistory = await loadInspectionHistory();
+    } catch (_) {}
+
+    const exportOptions: BundleExportOptions = {
+      title: bundleTitle,
+      accounts: getAllAccounts(),
+      activeAccountId: activeAccountsList[0] ? activeAccountsList[0].id : null,
+      files: currentFiles,
+      selectedFile: selectedFile,
+      simulatorState: {
+        abstraction: parseFloat(sliderAbstraction?.value || "85"),
+        velocity: parseFloat(sliderVelocity?.value || "1.4"),
+        friction: parseFloat(sliderFriction?.value || "70"),
+        simTime,
+        simHistory,
+        isSimulating
+      },
+      uiPreferences: {
+        activeTab: activeTabName,
+        cognitiveMode: currentCognitiveMode,
+        autoSwitchEnabled,
+        searchQuery: searchInput?.value || "",
+        typeFilter: typeFilter?.value || "all"
+      },
+      liveMcpServers: mcpRegistry.getLiveServers(),
+      mcpServers: mcpRegistry.getServers(),
+      inspectionHistory: cachedHistory
+    };
+
+    // 2. Collect rendered stylesheets from the DOM
+    const extraCss = collectDocumentStyles();
+
+    // 3. Generate companion deployment manifest data
+    const manifestData = generateDeploymentManifest(bundleTitle, htmlFilename, exportOptions);
+
+    // 4. Generate the full, self-contained standalone HTML file
+    const htmlContent = generateStandaloneBundleHtml(bundleTitle, exportOptions, undefined, extraCss);
+
+    // 5. Trigger download of the single self-contained HTML file
+    triggerFileDownload(htmlContent, htmlFilename, "text/html;charset=utf-8");
+
+    // 6. Trigger download of the companion manifest JSON inside the SAME download action
+    setTimeout(() => {
+      const manifestJson = JSON.stringify(manifestData, null, 2);
+      triggerFileDownload(manifestJson, manifestFilename, "application/json;charset=utf-8");
+    }, 200);
+
+    // 7. Surface visual feedback in the research hub
+    showMcpToast(
+      `📦 Exported standalone HTML bundle "${htmlFilename}" and companion manifest "${manifestFilename}"! Self-contained, working against connected Drive on load.`,
+      "success"
+    );
+  }
+
+  // Wire Tab 5 buttons
+  exportStandaloneBtn?.addEventListener("click", () => {
+    exportStandaloneBundle("Systems Scientist Research Hub");
+  });
+
+  downloadManifestBtn?.addEventListener("click", () => {
+    exportStandaloneBundle("Systems Scientist Research Hub");
+  });
+
+  // Wire all existing export buttons
+  document.querySelectorAll(".export-bundle-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const title = metasystemLinkInput?.value.trim() || (selectedFile ? selectedFile.name : "Active Research Repo");
+      exportStandaloneBundle(title);
+    });
+  });
+
+  // Expose globally on window for programmatic access or testing
+  (window as any).exportStandaloneBundle = exportStandaloneBundle;
+
+  resizeCanvases();
+  requestAnimationFrame(simLoop);
+</script>
+
+<style>
+  .systems-hub-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 3rem;
+  }
+
+  .hub-header-card {
+    background: linear-gradient(135deg, rgba(20, 24, 38, 0.95), rgba(15, 23, 42, 0.98));
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 1rem;
+    padding: 1.75rem;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
+  }
+
+  .hub-badge-row {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .hub-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+  }
+
+  .hub-chip.accent-chip {
+    background: rgba(168, 85, 247, 0.15);
+    color: #d8b4fe;
+    border-color: rgba(168, 85, 247, 0.3);
+  }
+
+  .hub-chip.non-tech-chip {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+
+  .hub-chip.status-idle {
+    background: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
+    border-color: rgba(239, 68, 68, 0.3);
+  }
+
+  .hub-chip.status-connected {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
+    border-color: rgba(34, 197, 94, 0.3);
+  }
+
+  .hub-main-title {
+    font-size: 1.85rem !important;
+    font-weight: 800;
+    color: #f8fafc !important;
+    margin-top: 0.25rem !important;
+    margin-bottom: 0.5rem !important;
+    letter-spacing: -0.025em;
+  }
+
+  .hub-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #94a3b8;
+    max-width: 58rem;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Multi-Drive Bar */
+  .hub-auth-bar {
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .multi-drive-control-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .accounts-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .accounts-label-group {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+  }
+
+  .drive-icon-badge {
+    font-size: 1.5rem;
+  }
+
+  .accounts-title {
+    display: block;
+    color: #f8fafc;
+    font-size: 0.95rem;
+  }
+
+  .accounts-sub {
+    font-size: 0.78rem;
+    color: #94a3b8;
+  }
+
+  .add-drive-btn {
+    background: #6366f1;
+    color: white !important;
+  }
+
+  .add-drive-btn:hover {
+    background: #4f46e5;
+  }
+
+  .accounts-pills-row {
+    display: flex;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .empty-accounts-prompt {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    background: rgba(30, 41, 59, 0.5);
+    padding: 0.65rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px dashed rgba(148, 163, 184, 0.2);
+    width: 100%;
+  }
+
+  .account-pill {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #1e293b;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 9999px;
+    padding: 0.3rem 0.65rem 0.3rem 0.35rem;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .account-pill:hover {
+    border-color: #6366f1;
+    background: #243048;
+  }
+
+  .account-pill.active {
+    border-color: #4ade80;
+    background: rgba(34, 197, 94, 0.12);
+  }
+
+  .pill-avatar {
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 9999px;
+    object-fit: cover;
+    border: 1.5px solid #6366f1;
+  }
+
+  .pill-meta {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+  }
+
+  .pill-name {
+    font-size: 0.78rem;
+    color: #f8fafc;
+  }
+
+  .pill-email {
+    font-size: 0.68rem;
+    color: #94a3b8;
+  }
+
+  .pill-remove-btn {
+    background: rgba(239, 68, 68, 0.15);
+    border: none;
+    color: #fca5a5;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .pill-remove-btn:hover {
+    background: #ef4444;
+    color: white;
+  }
+
+  /* Grid Layout */
+  .hub-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.35fr;
+    gap: 1.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .hub-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .hub-panel {
+    background: #0f172a;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 0.85rem;
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    min-height: 540px;
+  }
+
+  .panel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .panel-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .panel-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hub-select-account {
+    background: #1e293b;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 0.4rem;
+    color: #f8fafc;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+    outline: none;
+    cursor: pointer;
+    max-width: 180px;
+  }
+
+  .panel-icon {
+    font-size: 1.25rem;
+  }
+
+  .panel-header h3 {
+    font-size: 1.05rem !important;
+    font-weight: 700;
+    margin: 0 !important;
+    color: #f1f5f9 !important;
+  }
+
+  .counter-badge {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 9999px;
+  }
+
+  .search-filter-bar {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .hub-input {
+    flex: 1;
+    background: #1e293b;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 0.5rem;
+    color: #f8fafc;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.85rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .hub-input:focus {
+    border-color: #6366f1;
+  }
+
+  .hub-select {
+    background: #1e293b;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 0.5rem;
+    color: #f8fafc;
+    padding: 0.5rem 0.5rem;
+    font-size: 0.82rem;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .hub-state-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem;
+    text-align: center;
+    flex: 1;
+    background: rgba(30, 41, 59, 0.3);
+    border-radius: 0.5rem;
+    border: 1px dashed rgba(148, 163, 184, 0.2);
+  }
+
+  .empty-icon {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hub-state-box h4 {
+    margin: 0.25rem 0;
+    color: #f1f5f9;
+    font-size: 1rem;
+  }
+
+  .hub-state-box p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    max-width: 22rem;
+    margin: 0;
+  }
+
+  .files-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 480px;
+    overflow-y: auto;
+  }
+
+  .file-card {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: #1e293b;
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 0.5rem;
+    transition: transform 0.15s, border-color 0.15s;
+  }
+
+  .file-card:hover {
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .file-icon-box {
+    font-size: 1.4rem;
+    line-height: 1;
+  }
+
+  .file-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .file-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .file-name {
+    font-size: 0.88rem !important;
+    font-weight: 600;
+    color: #f8fafc !important;
+    margin: 0 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .source-account-badge {
+    background: rgba(168, 85, 247, 0.15);
+    color: #d8b4fe;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.1rem 0.4rem;
+    border-radius: 9999px;
+    white-space: nowrap;
+  }
+
+  .file-details {
+    display: flex;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    margin-top: 0.15rem;
+  }
+
+  .file-actions {
+    display: flex;
+    gap: 0.35rem;
+  }
+
+  /* Buttons */
+  .hub-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.45rem 0.85rem;
+    border-radius: 0.4rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    text-decoration: none !important;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .hub-btn-sm {
+    padding: 0.25rem 0.55rem;
+    font-size: 0.75rem;
+  }
+
+  .hub-btn-primary {
+    background: #6366f1;
+    color: #ffffff !important;
+  }
+
+  .hub-btn-primary:hover {
+    background: #4f46e5;
+  }
+
+  .hub-btn-outline {
+    background: rgba(99, 102, 241, 0.1);
+    color: #a5b4fc !important;
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  .hub-btn-outline:hover {
+    background: rgba(99, 102, 241, 0.2);
+  }
+
+  .hub-btn-subtle {
+    background: rgba(148, 163, 184, 0.1);
+    color: #cbd5e1 !important;
+    border-color: rgba(148, 163, 184, 0.2);
+  }
+
+  .hub-btn-subtle:hover {
+    background: rgba(148, 163, 184, 0.2);
+  }
+
+  .hub-btn-danger {
+    background: rgba(239, 68, 68, 0.15) !important;
+    color: #fca5a5 !important;
+    border: 1px solid rgba(239, 68, 68, 0.35) !important;
+  }
+
+  .hub-btn-danger:hover {
+    background: rgba(239, 68, 68, 0.3) !important;
+    border-color: #ef4444 !important;
+    color: #ffffff !important;
+  }
+
+  .accounts-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  /* Tab Group */
+  .tab-group {
+    display: flex;
+    gap: 0.25rem;
+    background: #1e293b;
+    padding: 0.2rem;
+    border-radius: 0.45rem;
+    flex-wrap: wrap;
+  }
+
+  .tab-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    border-radius: 0.35rem;
+    cursor: pointer;
+    transition: color 0.15s, background 0.15s;
+  }
+
+  .tab-btn.active {
+    background: #6366f1;
+    color: #ffffff;
+  }
+
+  /* System Loops Cards */
+  .system-loops-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+    margin-bottom: 1.25rem;
+  }
+
+  @media (max-width: 650px) {
+    .system-loops-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .loop-card {
+    background: #1e293b;
+    border-radius: 0.5rem;
+    padding: 0.85rem;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+  }
+
+  .loop-card.balancing {
+    border-left: 4px solid #38bdf8;
+  }
+
+  .loop-card.reinforcing {
+    border-left: 4px solid #4ade80;
+  }
+
+  .loop-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.4rem;
+  }
+
+  .loop-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #94a3b8;
+  }
+
+  .loop-status {
+    font-size: 0.7rem;
+    color: #38bdf8;
+    font-weight: 600;
+  }
+
+  .loop-card.reinforcing .loop-status {
+    color: #4ade80;
+  }
+
+  .loop-card h5 {
+    margin: 0 0 0.4rem 0 !important;
+    font-size: 0.88rem !important;
+    font-weight: 700;
+    color: #f8fafc !important;
+  }
+
+  .loop-card p {
+    font-size: 0.78rem;
+    color: #cbd5e1;
+    line-height: 1.4;
+    margin: 0 0 0.6rem 0;
+  }
+
+  .loop-metrics {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0.4rem;
+  }
+
+  /* Synthesizer Sandbox */
+  .synthesizer-card {
+    background: #1e293b;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+
+  .synthesizer-card h4 {
+    margin: 0 0 0.25rem 0 !important;
+    font-size: 0.95rem !important;
+    font-weight: 700;
+    color: #f8fafc !important;
+  }
+
+  .synthesizer-card .desc {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 0.75rem;
+  }
+
+  .link-presets-row {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 0.65rem;
+  }
+
+  .preset-label {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  .preset-pill {
+    background: rgba(99, 102, 241, 0.12);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    color: #a5b4fc;
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .preset-pill:hover {
+    background: rgba(99, 102, 241, 0.25);
+    border-color: #6366f1;
+    color: white;
+  }
+
+  .link-input-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .synthesizer-results {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+
+  .blueprint-card {
+    background: #0f172a;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.85rem;
+  }
+
+  .bp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.6rem;
+  }
+
+  .bp-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #f8fafc;
+  }
+
+  .bp-badge {
+    font-size: 0.68rem;
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
+    padding: 0.15rem 0.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+
+  .bp-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .bp-step {
+    display: flex;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    color: #cbd5e1;
+    line-height: 1.4;
+  }
+
+  .step-num {
+    background: #6366f1;
+    color: white;
+    width: 1.35rem;
+    height: 1.35rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.72rem;
+    flex-shrink: 0;
+  }
+
+  .bp-actions {
+    margin-top: 0.75rem;
+    padding-top: 0.65rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  /* Causal Loop Canvas & Simulator */
+  .simulator-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .sim-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .sim-header h4 {
+    margin: 0 !important;
+    color: #f8fafc !important;
+    font-size: 1.05rem !important;
+  }
+
+  .sim-desc {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 0.2rem 0 0 0;
+  }
+
+  .sim-controls {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .canvas-container {
+    position: relative;
+    background: #020617;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 0.65rem;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+  }
+
+  #causal-loop-canvas {
+    display: block;
+    width: 100%;
+    max-height: 270px;
+  }
+
+  .canvas-legend {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.75rem;
+    display: flex;
+    gap: 0.75rem;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    background: rgba(15, 23, 42, 0.8);
+    padding: 0.2rem 0.5rem;
+    border-radius: 0.3rem;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .legend-dot {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+  }
+
+  .legend-dot.green { background: #4ade80; }
+  .legend-dot.blue { background: #38bdf8; }
+  .legend-dot.gold { background: #fbbf24; }
+
+  .sim-params-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 0.75rem;
+  }
+
+  .param-slider-card {
+    background: #1e293b;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 0.5rem;
+    padding: 0.65rem 0.85rem;
+  }
+
+  .param-head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #cbd5e1;
+    margin-bottom: 0.4rem;
+  }
+
+  .slider-val {
+    color: #38bdf8;
+  }
+
+  .hub-range {
+    width: 100%;
+    accent-color: #6366f1;
+    cursor: pointer;
+  }
+
+  .metrics-chart-box {
+    background: #020617;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 0.65rem;
+    padding: 0.65rem;
+  }
+
+  .chart-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    margin-bottom: 0.4rem;
+  }
+
+  .chart-step {
+    color: #4ade80;
+    font-weight: 600;
+  }
+
+  #metrics-plot-canvas {
+    display: block;
+    width: 100%;
+    height: 110px;
+  }
+
+  /* MCP Ecosystem Styles */
+  .mcp-ecosystem-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .mcp-intro-banner {
+    background: #1e293b;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 0.65rem;
+    padding: 1.15rem;
+  }
+
+  .mcp-intro-title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .mcp-icon {
+    font-size: 1.4rem;
+  }
+
+  .mcp-intro-title h4 {
+    margin: 0 !important;
+    font-size: 1.05rem !important;
+    color: #f8fafc !important;
+  }
+
+  .mcp-intro-banner p {
+    font-size: 0.85rem;
+    color: #cbd5e1;
+    line-height: 1.5;
+    margin: 0 0 0.65rem 0;
+  }
+
+  .mcp-feature-list {
+    margin: 0;
+    padding-left: 1.2rem;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    line-height: 1.6;
+  }
+
+  .mcp-feature-list code {
+    background: #0f172a;
+    padding: 0.15rem 0.35rem;
+    border-radius: 0.25rem;
+    color: #d8b4fe;
+  }
+
+  .mcp-servers-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.85rem;
+  }
+
+  @media (max-width: 650px) {
+    .mcp-servers-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .mcp-server-card {
+    background: #1e293b;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 0.5rem;
+    padding: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .mcp-card-header {
+    display: flex;
+    gap: 0.65rem;
+    align-items: center;
+  }
+
+  .mcp-server-icon {
+    font-size: 1.5rem;
+  }
+
+  .mcp-server-meta h5 {
+    margin: 0 !important;
+    font-size: 0.9rem !important;
+    color: #f8fafc !important;
+  }
+
+  .mcp-status-pill {
+    font-size: 0.65rem;
+    padding: 0.1rem 0.4rem;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+
+  .mcp-status-pill.connected {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
+  }
+
+  .mcp-card-desc {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .mcp-metrics-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.72rem;
+    color: #cbd5e1;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 0.4rem;
+  }
+
+  .mcp-tools-list {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .mcp-tools-list code {
+    background: #0f172a;
+    color: #38bdf8;
+    font-size: 0.68rem;
+    padding: 0.15rem 0.4rem;
+    border-radius: 0.25rem;
+  }
+
+  .add-mcp-box {
+    background: #1e293b;
+    border: 1px dashed rgba(148, 163, 184, 0.2);
+    border-radius: 0.5rem;
+    padding: 1rem;
+  }
+
+  .add-mcp-box h5 {
+    margin: 0 0 0.3rem 0 !important;
+    font-size: 0.9rem !important;
+    color: #f8fafc !important;
+  }
+
+  .add-mcp-box p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 0 0 0.65rem 0;
+  }
+
+  .add-mcp-row {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .preset-endpoints-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.65rem;
+  }
+
+  /* MCP Sections */
+  .mcp-section-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .mcp-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+    padding-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .mcp-section-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .mcp-section-title-group h5 {
+    margin: 0 !important;
+    font-size: 0.95rem !important;
+    color: #f8fafc !important;
+    font-weight: 700;
+  }
+
+  .live-status-dot {
+    width: 0.65rem;
+    height: 0.65rem;
+    background: #22c55e;
+    border-radius: 9999px;
+    box-shadow: 0 0 8px #22c55e;
+  }
+
+  .live-status-dot.pulse {
+    animation: livePulse 2s infinite ease-in-out;
+  }
+
+  @keyframes livePulse {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.7; }
+  }
+
+  .counter-badge {
+    background: rgba(34, 197, 94, 0.15);
+    color: #86efac;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    font-weight: 700;
+  }
+
+  .non-tech-chip {
+    background: rgba(99, 102, 241, 0.15);
+    color: #a5b4fc;
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    font-size: 0.7rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+
+  .empty-live-box {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px dashed rgba(148, 163, 184, 0.25);
+    border-radius: 0.65rem;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    color: #94a3b8;
+  }
+
+  .empty-live-box .empty-icon {
+    font-size: 2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .empty-live-box h6 {
+    margin: 0 0 0.35rem 0;
+    font-size: 0.95rem;
+    color: #f8fafc;
+    font-weight: 600;
+  }
+
+  .empty-live-box p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    max-width: 520px;
+    margin: 0 auto 0.85rem auto;
+    line-height: 1.5;
+  }
+
+  .empty-live-box code {
+    background: #020617;
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.25rem;
+    color: #c084fc;
+  }
+
+  .preset-endpoints-row {
+    display: flex;
+    gap: 0.4rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Live MCP Server Cards */
+  .live-mcp-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .live-server-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95)) !important;
+    border: 1px solid rgba(34, 197, 94, 0.3) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 0.65rem;
+    padding: 1rem;
+    gap: 0.75rem;
+  }
+
+  .server-title-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .server-sub-row {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    font-size: 0.72rem;
+    color: #94a3b8;
+    margin-top: 0.15rem;
+    flex-wrap: wrap;
+  }
+
+  .server-endpoint-url code {
+    background: #020617;
+    color: #38bdf8;
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.25rem;
+    font-size: 0.72rem;
+  }
+
+  .mcp-server-meta-tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    background: rgba(2, 6, 23, 0.5);
+    padding: 0.4rem 0.65rem;
+    border-radius: 0.4rem;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.74rem;
+    color: #94a3b8;
+  }
+
+  .meta-tag strong {
+    color: #f8fafc;
+  }
+
+  /* Discovered Tools Section */
+  .live-tools-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 1px solid rgba(148, 163, 184, 0.15);
+    padding-top: 0.75rem;
+  }
+
+  .live-tools-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #f8fafc;
+  }
+
+  .live-tools-badge {
+    background: rgba(168, 85, 247, 0.18);
+    color: #d8b4fe;
+    border: 1px solid rgba(168, 85, 247, 0.35);
+    font-size: 0.65rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+
+  .no-tools-note {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    font-style: italic;
+    padding: 0.4rem 0;
+  }
+
+  .live-tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.65rem;
+  }
+
+  .live-tool-item {
+    background: rgba(15, 23, 42, 0.85);
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 0.5rem;
+    padding: 0.65rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .tool-item-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tool-name-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    overflow: hidden;
+  }
+
+  .tool-rpc-method {
+    background: #4338ca;
+    color: white;
+    font-size: 0.62rem;
+    font-weight: 700;
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.25rem;
+    font-family: monospace;
+    flex-shrink: 0;
+  }
+
+  .tool-name {
+    font-size: 0.82rem;
+    color: #f8fafc;
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .tool-desc {
+    font-size: 0.74rem;
+    color: #cbd5e1;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .tool-params-list {
+    display: flex;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 0.2rem;
+  }
+
+  .param-label {
+    font-size: 0.68rem;
+    color: #94a3b8;
+    font-weight: 600;
+  }
+
+  .param-pill {
+    background: rgba(30, 41, 59, 0.9);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    color: #93c5fd;
+    font-size: 0.65rem;
+    font-family: monospace;
+    padding: 0.05rem 0.3rem;
+    border-radius: 0.25rem;
+  }
+
+  .param-req {
+    color: #f43f5e;
+    font-weight: 700;
+  }
+
+  .tool-params-empty {
+    font-size: 0.68rem;
+    color: #64748b;
+    font-style: italic;
+  }
+
+  /* Interactive Tool Runner Card */
+  .mcp-tool-runner-card {
+    background: linear-gradient(135deg, rgba(24, 30, 50, 0.95), rgba(15, 23, 42, 0.98));
+    border: 1px solid rgba(168, 85, 247, 0.4);
+    border-radius: 0.65rem;
+    padding: 1rem 1.15rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .runner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .runner-title-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .runner-icon {
+    font-size: 1.35rem;
+  }
+
+  .runner-title-group h5 {
+    margin: 0 !important;
+    font-size: 0.95rem !important;
+    color: #f8fafc !important;
+    font-family: monospace;
+  }
+
+  .runner-server-tag {
+    font-size: 0.72rem;
+    color: #94a3b8;
+  }
+
+  .runner-desc {
+    font-size: 0.78rem;
+    color: #cbd5e1;
+    margin: 0;
+  }
+
+  .runner-input-group label {
+    display: block;
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #cbd5e1;
+    margin-bottom: 0.25rem;
+  }
+
+  .hub-textarea {
+    width: 100%;
+    background: #020617;
+    border: 1px solid rgba(148, 163, 184, 0.25);
+    border-radius: 0.4rem;
+    color: #f8fafc;
+    font-family: monospace;
+    font-size: 0.78rem;
+    padding: 0.5rem;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+
+  .runner-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .runner-status {
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .runner-status.running {
+    color: #fbbf24;
+  }
+
+  .runner-status.success {
+    color: #4ade80;
+  }
+
+  .runner-status.error {
+    color: #f87171;
+  }
+
+  .runner-result-box {
+    background: #020617;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 0.4rem;
+    padding: 0.65rem;
+    max-height: 220px;
+    overflow-y: auto;
+  }
+
+  .runner-result-box h6 {
+    margin: 0 0 0.35rem 0;
+    font-size: 0.75rem;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .runner-result-box pre {
+    margin: 0;
+    font-size: 0.76rem;
+    color: #e2e8f0;
+    font-family: monospace;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  /* MCP Toast Feedback */
+  .mcp-toast {
+    margin-top: 0.65rem;
+    font-size: 0.8rem;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0.45rem;
+    line-height: 1.4;
+  }
+
+  .mcp-toast .toast-content {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .mcp-toast .toast-indicator {
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .mcp-toast .toast-body {
+    flex: 1;
+    word-break: break-word;
+  }
+
+  .mcp-toast-success {
+    background: rgba(34, 197, 94, 0.15);
+    border: 1px solid rgba(34, 197, 94, 0.4);
+    color: #86efac;
+  }
+
+  .mcp-toast-error {
+    background: rgba(239, 68, 68, 0.18);
+    border: 1px solid rgba(239, 68, 68, 0.45);
+    color: #fca5a5;
+  }
+
+  .mcp-toast-info {
+    background: rgba(99, 102, 241, 0.15);
+    border: 1px solid rgba(99, 102, 241, 0.35);
+    color: #c7d2fe;
+  }
+
+  /* Doc Inspector & Preview */
+  .preview-box {
+    display: flex;
+    flex-direction: column;
+    min-height: 420px;
+  }
+
+  .preview-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 1rem;
+    text-align: center;
+    color: #94a3b8;
+  }
+
+  .preview-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .doc-inspect-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .meta-tag-row {
+    display: flex;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .doc-title {
+    font-size: 1.1rem !important;
+    font-weight: 700;
+    color: #f8fafc !important;
+    margin: 0.35rem 0 0 0 !important;
+  }
+
+  .doc-header-actions {
+    display: flex;
+    gap: 0.4rem;
+  }
+
+  .doc-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.5rem;
+    background: #1e293b;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0.5rem;
+    font-size: 0.78rem;
+    color: #cbd5e1;
+  }
+
+  .ontology-box {
+    background: #1e293b;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    border-radius: 0.5rem;
+    padding: 0.85rem;
+  }
+
+  .ontology-card h5 {
+    margin: 0 0 0.5rem 0 !important;
+    font-size: 0.88rem !important;
+    color: #d8b4fe !important;
+  }
+
+  .ontology-card ul {
+    margin: 0;
+    padding-left: 1.2rem;
+    font-size: 0.78rem;
+    color: #cbd5e1;
+    line-height: 1.6;
+  }
+
+  .doc-content-preview {
+    background: #020617;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .content-header {
+    background: #1e293b;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #94a3b8;
+  }
+
+  .content-body {
+    padding: 0.85rem;
+    font-family: monospace;
+    font-size: 0.8rem;
+    line-height: 1.5;
+    color: #e2e8f0;
+    white-space: pre-wrap;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+
+  /* Inspection History Card */
+  .inspection-history-card {
+    background: #1e293b;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+    border-radius: 0.65rem;
+    padding: 0.85rem 1rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+  }
+
+  .history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .history-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+  }
+
+  .history-icon {
+    font-size: 1.1rem;
+  }
+
+  .history-title-group h5 {
+    margin: 0 !important;
+    font-size: 0.88rem !important;
+    color: #f8fafc !important;
+  }
+
+  .history-persistence-tag {
+    font-size: 0.68rem;
+    background: rgba(168, 85, 247, 0.15);
+    color: #d8b4fe;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    padding: 0.15rem 0.45rem;
+    border-radius: 9999px;
+    font-weight: 600;
+  }
+
+  .inspection-history-chips {
+    display: flex;
+    gap: 0.45rem;
+    flex-wrap: wrap;
+  }
+
+  .history-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #0f172a;
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 0.4rem;
+    padding: 0.35rem 0.6rem;
+    cursor: pointer;
+    font-size: 0.76rem;
+    color: #cbd5e1;
+    transition: all 0.15s ease-in-out;
+  }
+
+  .history-chip:hover {
+    border-color: #6366f1;
+    background: #1e293b;
+    color: #ffffff;
+  }
+
+  .history-chip.active {
+    border-color: #a855f7;
+    background: rgba(168, 85, 247, 0.15);
+    color: #e9d5ff;
+  }
+
+  .chip-name {
+    max-width: 160px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+
+  .chip-time {
+    font-size: 0.65rem;
+    color: #94a3b8;
+  }
+
+  /* Frictionless Protocols & VSM */
+  .zero-friction-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .panel-head-group {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .deploy-actions-group {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .panel-sub-desc {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    margin: 0.2rem 0 0 0;
+  }
+
+  .zero-friction-panel h4 {
+    margin: 0 !important;
+    color: #f8fafc !important;
+    font-size: 1.05rem !important;
+  }
+
+  .protocol-matrix {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .proto-item {
+    display: flex;
+    gap: 0.85rem;
+    background: #1e293b;
+    padding: 0.85rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(148, 163, 184, 0.15);
+  }
+
+  .proto-icon {
+    font-size: 1.5rem;
+    line-height: 1;
+  }
+
+  .proto-item strong {
+    display: block;
+    color: #f8fafc;
+    font-size: 0.88rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .proto-item p {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .vsm-matrix-card {
+    background: #1e293b;
+    border: 1px solid rgba(99, 102, 241, 0.25);
+    border-radius: 0.65rem;
+    padding: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .vsm-matrix-card h5 {
+    margin: 0 0 0.75rem 0 !important;
+    font-size: 0.95rem !important;
+    color: #f8fafc !important;
+  }
+
+  .vsm-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 0.65rem;
+  }
+
+  .vsm-col {
+    background: #0f172a;
+    padding: 0.65rem;
+    border-radius: 0.4rem;
+    border: 1px solid rgba(148, 163, 184, 0.1);
+  }
+
+  .vsm-badge {
+    display: inline-block;
+    background: #6366f1;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 0.1rem 0.35rem;
+    border-radius: 0.25rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .vsm-col strong {
+    display: block;
+    font-size: 0.8rem;
+    color: #f8fafc;
+    margin-bottom: 0.25rem;
+  }
+
+  .vsm-col p {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  /* Spinner */
+  .spinner {
+    width: 2rem;
+    height: 2rem;
+    border: 3px solid rgba(99, 102, 241, 0.2);
+    border-top-color: #6366f1;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-bottom: 0.75rem;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .offline-presets-box {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  .preset-btns-row {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* =========================================================
+     ADAPTIVE COGNITIVE UI LAYER STYLES
+  ========================================================== */
+  .cognitive-layer-card {
+    background: linear-gradient(135deg, rgba(24, 30, 48, 0.95), rgba(15, 23, 42, 0.98));
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: 0.85rem;
+    padding: 1.15rem 1.35rem;
+    box-shadow: 0 4px 15px -3px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    backdrop-filter: blur(12px);
+    transition: all 0.25s ease-in-out;
+  }
+
+  .cognitive-layer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  .cognitive-title-group {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+  }
+
+  .cognitive-pulse-orb {
+    font-size: 1.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.65rem;
+    height: 2.65rem;
+    background: radial-gradient(circle, rgba(99, 102, 241, 0.3) 0%, rgba(99, 102, 241, 0.05) 75%);
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    border-radius: 0.7rem;
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
+    flex-shrink: 0;
+  }
+
+  .cognitive-heading-row {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    flex-wrap: wrap;
+  }
+
+  .cognitive-title {
+    margin: 0 !important;
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: #f8fafc !important;
+    letter-spacing: -0.01em;
+  }
+
+  .cognitive-mode-badge {
+    background: rgba(99, 102, 241, 0.2);
+    color: #c7d2fe;
+    border: 1px solid rgba(99, 102, 241, 0.4);
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.15rem 0.55rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .cognitive-engine-tag {
+    color: #64748b;
+    font-size: 0.72rem;
+    font-weight: 500;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .cognitive-desc {
+    margin: 0.2rem 0 0 0 !important;
+    font-size: 0.82rem !important;
+    color: #94a3b8 !important;
+    line-height: 1.4 !important;
+    max-width: 52rem;
+  }
+
+  .cognitive-actions-group {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  /* Subtle Suggestion Chip */
+  .cognitive-suggestion-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.25), rgba(168, 85, 247, 0.25));
+    border: 1px solid rgba(168, 85, 247, 0.55);
+    border-radius: 9999px;
+    padding: 0.28rem 0.65rem 0.28rem 0.85rem;
+    color: #f8fafc;
+    font-size: 0.82rem;
+    font-weight: 600;
+    animation: pulseChipGlow 2.4s infinite ease-in-out;
+  }
+
+  @keyframes pulseChipGlow {
+    0%, 100% { box-shadow: 0 0 10px rgba(168, 85, 247, 0.25); border-color: rgba(168, 85, 247, 0.55); }
+    50% { box-shadow: 0 0 20px rgba(168, 85, 247, 0.55); border-color: rgba(168, 85, 247, 0.85); }
+  }
+
+  .suggestion-glow {
+    font-size: 0.95rem;
+  }
+
+  .suggestion-text {
+    color: #e0e7ff;
+    font-weight: 600;
+  }
+
+  .suggestion-apply-btn {
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 9999px;
+    padding: 0.22rem 0.65rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+
+  .suggestion-apply-btn:hover {
+    background: #4f46e5;
+    transform: scale(1.05);
+  }
+
+  .suggestion-dismiss-btn {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    font-size: 0.78rem;
+    cursor: pointer;
+    padding: 0.15rem 0.35rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.15s;
+  }
+
+  .suggestion-dismiss-btn:hover {
+    color: #f8fafc;
+  }
+
+  /* Auto-switch Toggle Switch */
+  .auto-switch-toggle-wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  .auto-switch-label {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    cursor: pointer;
+    font-size: 0.78rem;
+    color: #cbd5e1;
+    user-select: none;
+  }
+
+  .toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 32px;
+    height: 18px;
+  }
+
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .toggle-slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #334155;
+    transition: 0.2s;
+    border-radius: 18px;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+  }
+
+  .toggle-slider:before {
+    position: absolute;
+    content: "";
+    height: 12px;
+    width: 12px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: 0.2s;
+    border-radius: 50%;
+  }
+
+  .toggle-switch input:checked + .toggle-slider {
+    background-color: #6366f1;
+  }
+
+  .toggle-switch input:checked + .toggle-slider:before {
+    transform: translateX(14px);
+  }
+
+  .toggle-status-text {
+    font-size: 0.72rem;
+    color: #94a3b8;
+  }
+
+  /* 5 Cognitive Mode Buttons Grid */
+  .cognitive-modes-bar {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.65rem;
+  }
+
+  @media (max-width: 900px) {
+    .cognitive-modes-bar {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .cognitive-mode-btn {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(148, 163, 184, 0.2);
+    border-radius: 0.65rem;
+    padding: 0.65rem 0.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+    overflow: hidden;
+  }
+
+  .cognitive-mode-btn:hover {
+    background: rgba(30, 41, 59, 0.8);
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .cognitive-mode-btn.active {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(30, 41, 59, 0.9));
+    border-color: #6366f1;
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.25);
+  }
+
+  .mode-btn-head {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    width: 100%;
+  }
+
+  .mode-icon {
+    font-size: 1.15rem;
+  }
+
+  .mode-name {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #f8fafc;
+  }
+
+  .mode-sub {
+    font-size: 0.72rem;
+    color: #94a3b8;
+    margin-top: 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
+
+  .mode-score-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(148, 163, 184, 0.15);
+    border-radius: 9999px;
+    margin-top: 0.45rem;
+    overflow: hidden;
+  }
+
+  .score-fill {
+    display: block;
+    height: 100%;
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    border-radius: 9999px;
+    transition: width 0.4s ease;
+  }
+
+  .mode-suggest-pill {
+    position: absolute;
+    top: 0.35rem;
+    right: 0.35rem;
+    background: #a855f7;
+    color: white;
+    font-size: 0.62rem;
+    font-weight: 800;
+    padding: 0.1rem 0.4rem;
+    border-radius: 9999px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    animation: pulseBadge 1.8s infinite ease-in-out;
+  }
+
+  @keyframes pulseBadge {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.08); opacity: 0.85; }
+  }
+
+  /* Emphasis Strip */
+  .cognitive-emphasis-strip {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    background: rgba(15, 23, 42, 0.5);
+    border: 1px dashed rgba(148, 163, 184, 0.2);
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.78rem;
+    color: #cbd5e1;
+  }
+
+  .emphasis-icon {
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+
+  .emphasis-body {
+    flex: 1;
+  }
+
+  .emphasis-body strong {
+    color: #f8fafc;
+    margin-right: 0.35rem;
+  }
+
+  .focus-drawer-toggle-wrap button {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.65rem;
+  }
+
+  /* Layout Grid Adaptations per Mode */
+  .systems-hub-wrapper[data-cognitive-mode="executive"] .hub-grid {
+    grid-template-columns: 0.85fr 1.55fr;
+    transition: grid-template-columns 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .systems-hub-wrapper[data-cognitive-mode="technical"] .hub-grid {
+    grid-template-columns: 1fr 1fr;
+    transition: grid-template-columns 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .systems-hub-wrapper[data-cognitive-mode="creative"] .hub-grid {
+    grid-template-columns: 1fr 1.4fr;
+    transition: grid-template-columns 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .systems-hub-wrapper[data-cognitive-mode="analytics"] .hub-grid {
+    grid-template-columns: 0.7fr 1.7fr;
+    transition: grid-template-columns 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .systems-hub-wrapper[data-cognitive-mode="focus"] .hub-grid {
+    grid-template-columns: 1fr;
+    transition: grid-template-columns 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  @media (max-width: 900px) {
+    .systems-hub-wrapper[data-cognitive-mode="executive"] .hub-grid,
+    .systems-hub-wrapper[data-cognitive-mode="technical"] .hub-grid,
+    .systems-hub-wrapper[data-cognitive-mode="creative"] .hub-grid,
+    .systems-hub-wrapper[data-cognitive-mode="analytics"] .hub-grid,
+    .systems-hub-wrapper[data-cognitive-mode="focus"] .hub-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Density Tuning */
+  .systems-hub-wrapper[data-density="roomy"] .hub-panel {
+    padding: 1.65rem;
+  }
+
+  .systems-hub-wrapper[data-density="roomy"] .system-loops-grid {
+    gap: 1.25rem;
+  }
+
+  .systems-hub-wrapper[data-density="compact"] .hub-panel {
+    padding: 1rem;
+  }
+
+  .systems-hub-wrapper[data-density="compact"] .files-list li {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .systems-hub-wrapper[data-density="compact"] .file-name {
+    font-size: 0.84rem;
+  }
+
+  .systems-hub-wrapper[data-density="compact"] .file-details {
+    font-size: 0.72rem;
+  }
+
+  .systems-hub-wrapper[data-density="expanded"] .canvas-container {
+    padding: 0.85rem;
+    background: rgba(10, 15, 30, 0.8);
+  }
+
+  .systems-hub-wrapper[data-density="minimal"] .hub-badge-row {
+    opacity: 0.6;
+  }
+
+  .systems-hub-wrapper[data-density="minimal"] .hub-subtitle {
+    display: none;
+  }
+</style>

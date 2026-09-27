@@ -1,0 +1,17 @@
+{
+  "name": "electrobun-root",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm run dev --workspace=docs",
+    "build": "npm run build --workspace=docs",
+    "lint": "npm run lint --workspace=docs"
+  },
+  "workspaces": [
+    "docs"
+  ],
+  "dependencies": {
+    "firebase": "^12.19.0"
+  }
+}

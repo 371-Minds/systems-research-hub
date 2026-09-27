@@ -1,0 +1,81 @@
+{
+	"name": "electrobun",
+	"version": "2.0.2-beta.15",
+	"private": true,
+	"description": "Build ultra fast, tiny, and cross-platform desktop apps with Typescript.",
+	"license": "MIT",
+	"author": "Blackboard Technologies Inc.",
+	"keywords": [
+		"bun",
+		"desktop",
+		"app",
+		"cross-platform",
+		"typescript"
+	],
+	"exports": {
+		".": "./dist/api/sdks/main/index.ts",
+		"./main": "./dist/api/sdks/main/index.ts",
+		"./main/app-menu": "./dist/api/sdks/main/entries/app-menu.ts",
+		"./main/browser-view": "./dist/api/sdks/main/entries/browser-view.ts",
+		"./main/browser-window": "./dist/api/sdks/main/entries/browser-window.ts",
+		"./main/build-config": "./dist/api/sdks/main/entries/build-config.ts",
+		"./main/context-menu": "./dist/api/sdks/main/entries/context-menu.ts",
+		"./main/events": "./dist/api/sdks/main/entries/events.ts",
+		"./main/gpu-window": "./dist/api/sdks/main/entries/gpu-window.ts",
+		"./main/native": "./dist/api/sdks/main/entries/native.ts",
+		"./main/paths": "./dist/api/sdks/main/entries/paths.ts",
+		"./main/rpc": "./dist/api/sdks/main/entries/rpc.ts",
+		"./main/socket": "./dist/api/sdks/main/entries/socket.ts",
+		"./main/tray": "./dist/api/sdks/main/entries/tray.ts",
+		"./main/ui": "./dist/api/sdks/main/entries/ui.ts",
+		"./main/ui/jsx-runtime": "./dist/api/sdks/main/ui/jsx-runtime.ts",
+		"./main/ui/jsx-dev-runtime": "./dist/api/sdks/main/ui/jsx-dev-runtime.ts",
+		"./main/updater": "./dist/api/sdks/main/entries/updater.ts",
+		"./main/utils": "./dist/api/sdks/main/entries/utils.ts",
+		"./main/webgpu": "./dist/api/sdks/main/entries/webgpu.ts",
+		"./main/wgpu-view": "./dist/api/sdks/main/entries/wgpu-view.ts",
+		"./bun": "./dist/api/sdks/main/index.ts",
+		"./bun/app-menu": "./dist/api/sdks/main/entries/app-menu.ts",
+		"./bun/browser-view": "./dist/api/sdks/main/entries/browser-view.ts",
+		"./bun/browser-window": "./dist/api/sdks/main/entries/browser-window.ts",
+		"./bun/build-config": "./dist/api/sdks/main/entries/build-config.ts",
+		"./bun/context-menu": "./dist/api/sdks/main/entries/context-menu.ts",
+		"./bun/events": "./dist/api/sdks/main/entries/events.ts",
+		"./bun/gpu-window": "./dist/api/sdks/main/entries/gpu-window.ts",
+		"./bun/native": "./dist/api/sdks/main/entries/native.ts",
+		"./bun/paths": "./dist/api/sdks/main/entries/paths.ts",
+		"./bun/rpc": "./dist/api/sdks/main/entries/rpc.ts",
+		"./bun/socket": "./dist/api/sdks/main/entries/socket.ts",
+		"./bun/tray": "./dist/api/sdks/main/entries/tray.ts",
+		"./bun/ui": "./dist/api/sdks/main/entries/ui.ts",
+		"./bun/ui/jsx-runtime": "./dist/api/sdks/main/ui/jsx-runtime.ts",
+		"./bun/ui/jsx-dev-runtime": "./dist/api/sdks/main/ui/jsx-dev-runtime.ts",
+		"./bun/updater": "./dist/api/sdks/main/entries/updater.ts",
+		"./bun/utils": "./dist/api/sdks/main/entries/utils.ts",
+		"./bun/webgpu": "./dist/api/sdks/main/entries/webgpu.ts",
+		"./bun/wgpu-view": "./dist/api/sdks/main/entries/wgpu-view.ts",
+		"./rpc": "./dist/api/sdks/main/entries/rpc.ts",
+		"./view": "./dist/api/browser/index.ts",
+		"./browser/ui": "./dist/api/browser/ui/index.ts",
+		"./browser/ui/jsx-runtime": "./dist/api/browser/ui/jsx-runtime.ts",
+		"./browser/ui/jsx-dev-runtime": "./dist/api/browser/ui/jsx-dev-runtime.ts"
+	},
+	"type": "module",
+	"homepage": "https://electrobun.dev",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/blackboardsh/electrobun.git"
+	},
+	"scripts": {
+		"build:local": "node scripts/build-local.js"
+	},
+	"devDependencies": {
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"@types/bun": "^1.4.0",
+		"png-to-ico": "^2.1.8",
+		"proxy-agent": "^6.5.0",
+		"rcedit": "^4.0.1"
+	}
+}

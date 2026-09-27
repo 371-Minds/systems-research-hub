@@ -1,0 +1,8 @@
+{
+  "name": "371-ark",
+  "description": "Imported from GitHub: 371-Minds/electrobun",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

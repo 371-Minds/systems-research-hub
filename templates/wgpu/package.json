@@ -1,0 +1,10 @@
+{
+	"name": "electrobun-wgpu",
+	"version": "1.0.0",
+	"type": "module",
+	"description": "A minimal WebGPU shader demo",
+	"devDependencies": {
+		"@types/bun": "latest",
+		"typescript": "^5.7.2"
+	}
+}
